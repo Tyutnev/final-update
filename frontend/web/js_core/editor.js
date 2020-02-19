@@ -35,7 +35,6 @@ const updateTools = (event) => {
     }
 
     let fontSize = currentEditable.css('font-size').replace('px', '');
-    console.log(fontSize);
     $('.quantity').attr('value', fontSize);
 };
 
@@ -137,6 +136,23 @@ const scaleCanvas = (event) => {
     console.log(scale / 100);
 }
 
+/**
+ * 
+ * 
+ * @param {object} event 
+ */
+const getToolsPanel = (event) => {
+    let type = $(event.target).attr('data-type');
+    $('.tools-panel').hide();
+
+    if (type == 'text') $('.tools-panel-text').show();
+    if (type == 'element') $('.tools-panel-element').show();
+}
+
+const removeNode = (event) => {
+    $(CURRENT_EDIT_ELEMENT).remove();
+}
+
 $('#weight').click(editWeightText);
 $('#style').click(editItalicText);
 $('#underline').click(editUnderlineText);
@@ -145,3 +161,5 @@ $('.size-tool').click(editSizeText);
 $('.pcr-save').click(editColor);
 $('.scale').keyup(scaleCanvas);
 $('.pcr-picker').mousemove(editColor);
+$('.delete-button').click(removeNode);
+$('svg').click(editableHandler);
