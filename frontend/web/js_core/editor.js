@@ -177,3 +177,17 @@ $('.pcr-save').click(editColor);
 $('.scale').keyup(scaleCanvas);
 $('.pcr-picker').mousemove(editColor);
 $('.delete-button').click(removeNode);
+
+$('.size-tool-button').click((event) => {
+    let isPlus = $(event.target).hasClass('plus');
+    let currentScale = +$('.scale').val();
+
+    if (isPlus) {
+        currentScale += 10;
+    } else if (currentScale > 10) {
+        currentScale -= 10;
+    }
+
+    $('.scale').val(currentScale);
+    $('.main-svg').css('transform', `scale(${currentScale / 100})`);
+})

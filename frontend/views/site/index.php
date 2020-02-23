@@ -130,9 +130,9 @@ $this->title = 'Страница редактирования';
                 <div class="d-flex card-body justify-content-center ">
 
                     <div class="plus_btn def-number-input number-input safari_only">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
+                        <button class="minus size-tool size-tool-button"></button>
                         <input class="scale" min="0" name="scale" value="100" type="number">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus size-tool"></button>
+                        <button class="plus size-tool size-tool-button"></button>
                     </div>
                 </div>
 
