@@ -47,6 +47,7 @@ const editableHandler = (event) => {
     //Указываем, что данный элемент редактируется
     $(event.target).attr(CURRENT_EDIT, 'true');
     updateTools();
+    console.log('Update editable element');
 };
 
 /**
@@ -123,6 +124,7 @@ const editSizeText = (event) => {
  * @param {object} event 
  */
 const editColor = (event) => {
+    $('[data-edit-item="true"]').attr('stroke', $('.pcr-result').val());
     $(CURRENT_EDIT_ELEMENT).css('color', $('.pcr-result').val());
 };
 
@@ -146,12 +148,29 @@ const getToolsPanel = (event) => {
     $('.tools-panel').hide();
 
     if (type == 'text') $('.tools-panel-text').show();
-    if (type == 'element') $('.tools-panel-element').show();
+    if (type == 'element') $('.tools-panel-text').show();
 }
 
 const removeNode = (event) => {
     $(CURRENT_EDIT_ELEMENT).remove();
 }
+
+/**
+ * Загрузка файлов
+ */
+$('[type="file"]').change((event) => {
+
+    console.log('Here');
+
+    let logo = $('[data-img="true"]');
+    let img = $('[type="file"]')[0].files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(img);
+
+    reader.onloadend = () => {
+        logo.attr('src', reader.result);
+    }
+});
 
 $('#weight').click(editWeightText);
 $('#style').click(editItalicText);
@@ -162,4 +181,3 @@ $('.pcr-save').click(editColor);
 $('.scale').keyup(scaleCanvas);
 $('.pcr-picker').mousemove(editColor);
 $('.delete-button').click(removeNode);
-$('svg').click(editableHandler);

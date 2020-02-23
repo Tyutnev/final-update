@@ -79,24 +79,20 @@ $this->title = 'Страница редактирования';
             <!-- start main content -->
             <div class="position-absolute fixed-top">
 
-                <div class="card w-100">
+                <div class="border-bottom card w-100">
                     <div class="d-flex card-body justify-content-between ">
 
                         <div class="text-center flex-column">
 
-                            <button class="btn btn--primary button-studio" aria-controls="sidebar"><img src="img/ListButton.svg"></button>
-                            <button class="btn btn--primary button-studio"><img src="img/11.svg"></button>
+                            <button class="shadow_none btn btn--primary button-studio" aria-controls="sidebar"><img src="img/ListButton.svg"></button>
+                            <button class="shadow_none btn btn--primary button-studio"><img src="img/11.svg"></button>
                         </div>
 
                         <div class="text-center flex-column">
 
-                            <button class="btn btn--primary button-studio"><img src="img/12.svg"></button>
-                            <button class="btn btn--primary button-studio"><img src="img/13.svg"></button>
-                                                    <div class="m-5 def-number-input number-input safari_only" style="display: inline;">
-<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
-<input class="scale" min="0" name="scale" value="100" type="number">
-<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus size-tool"></button>
-</div>
+                            <button class="shadow_none btn btn--primary button-studio"><img src="img/12.svg"></button>
+                            <button class="shadow_none btn btn--primary button-studio"><img src="img/13.svg"></button>
+
                        <!--       <div class="def-number-input number-input safari_only">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
                                 <input class="scale" min="0" name="scale" value="100" type="number">
@@ -109,10 +105,10 @@ $this->title = 'Страница редактирования';
 
                         <div class="text-center flex-column">
 
-                            <button class="btn btn--primary button-studio"><img src="img/14.svg"></button>
+                            <button class="shadow_none btn btn--primary button-studio"><img src="img/14.svg"></button>
                             
                             
-  <button class="save btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown"
+  <button class="shadow_none save btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown"
     aria-haspopup="true" aria-expanded="false"> <img src="img/15.svg">
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
@@ -131,7 +127,17 @@ $this->title = 'Страница редактирования';
 
                     </div>
                 </div>
-
+  <div class="w-100">
+       <div class="d-flex card-body justify-content-center ">
+           
+           <div class="plus_btn def-number-input number-input safari_only">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
+                                <input class="scale" min="0" name="scale" value="100" type="number">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus size-tool"></button>
+                            </div>
+      </div>
+      
+                </div>
             </div>
 
             
@@ -165,71 +171,78 @@ $this->title = 'Страница редактирования';
                                 <input class="scale quantity" min="0" name="quantity" value="100" type="number">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus size-tool"></button>
                             </div>-->
-                <div class="card w-100 a border-0 b">
+                <div class="card border-top w-100 a border-0 b">
 
 
 
-    <!-- default panel -->
-    <div class="card w-100 a border-0 b tools-panel tools-panel-default">
-        <div class="d-flex card-body index justify-content-around c">
-            <p class="m-0 label_color">Выберите элемент</p>
-        </div>
-    </div>
+                    <div class="d-flex card-body index justify-content-around c">
 
-    <!-- text panel -->
-    <div style="display: none;" class="card w-100 a border-0 b tools-panel tools-panel-text">
-        <div  class="d-flex card-body index justify-content-around c" data-tools="defalt">
-        <div class="flex flex-column items-start ">
-            <label class="form-label label_color rgin-bottom-xxxs m-auto" for="selectThis">Шрифт:</label>
+                        <div class="flex flex-column items-start ">
+                            <label class="form-label label_color rgin-bottom-xxxs m-auto" for="selectThis"></label>
 
-            <button class="fonts btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                Шрифт
-            </button>
-            </div>
+                            <button class="shadow_none btn_main fonts btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Шрифт
+  </button>
+                        </div>
 
-                <div class="text-center flex-column">
-                <p class="m-0 label_color">A</p>
+                        <div class="text-center flex-column">
+                            <p class="m-0 label_color">Цвет</p>
 
-                <button class=" btn color-picker button-studio btn--primary m"></button>
-                <button class="delete-button">Удалить элемент</button>
-            </div>
 
-            <div class="text-center flex-column">
-                <p class="m-0 label_color">Размер</p>
-                <div class="def-number-input number-input safari_only">
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
-                <input class="quantity" min="0" name="quantity" value="1" type="number">
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus size-tool"></button>
-            </div>
+                            <button class=" btn color-picker button-studio btn--primary m"></button>
 
-            </div>
 
-            <div class="text-center flex-column">
-                <p class="m-0 label_color">Стиль</p>
-                <button id="underline" class="btn btn--primary button-studio"><img src="img/16.svg"></button>
-                <button id="weight" class="btn btn--primary button-studio text-style"><img src="img/17.svg"></button>
-                <button id="style" class="btn btn--primary button-studio text-style"><img src="img/18.svg"></button>
+                        </div>
 
-            </div>
 
-            <div class="text-center flex-column">
-                
-        </div>
-        </div>
-    </div>
+                        <div class="text-center flex-column">
+                            <p class="m-0 label_color">Размер</p>
+                            <div class="def-number-input number-input safari_only">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
+                                <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus size-tool"></button>
+                            </div>
 
-        <!-- element panel -->
-        <div style="display: none;" class="card w-100 a border-0 b tools-panel tools-panel-element">
-        <div class="d-flex card-body index justify-content-around c">
-            <div class="text-center flex-column">
-                <p class="m-0 label_color">A</p>
-                <div class="pickr">
+                        </div>
 
-        <button type="button" class="pcr-button" role="button" aria-label="toggle color picker dialog" style="color: rgb(66, 68, 90);"></button>
-      </div>
-                 </div>
-        </div>
-        </div>
+
+
+                        <div class="text-center flex-column">
+                            <p class="m-0 label_color">Стиль</p>
+                            <button id="underline" class="shadow_none btn  btn--primary button-studio"><img src="img/16.svg"></button>
+                            <button id="weight" class="shadow_none btn btn--primary button-studio text-style"><img src="img/17.svg"></button>
+                            <button id="style" class="shadow_none btn btn--primary button-studio text-style"><img src="img/18.svg"></button>
+
+                        </div>
+
+                        <!--       <div class="flex flex-column items-start ">
+  <label class="form-label margin-bottom-xxxs  ml-auto mr-auto mb-0" for="selectThis">Логотип:</label>
+  
+<button class="btn btn--primary safe button-studio">Выбрать логотип</button>
+</div>-->
+                   <div class="text-center flex-column">
+                            <p class="label_color m-0">Логотип</p>
+
+                         <!--   <input type="file" class="btn  btn--primary button-studio"/> -->
+                            
+ <fieldset class="file-upload">
+  <label for="upload1" class="btn_main shadow_none file-upload__label btn btn--subtle h-36">
+    <span class="file-upload__text file-upload__text--has-max-width">Upload a file</span>
+  </label>
+  
+  <input type="file" class="file-upload__input" name="upload1" id="upload1">
+</fieldset>
+
+
+                            
+                            
+                            
+                        
+
+
+
+                        </div>
+
 
                     <!--    <div class="flex flex-column items-start ">
                             <label class="label_color form-label margin-bottom-xxxs m-auto" for="selectThis">Скачать:</label>

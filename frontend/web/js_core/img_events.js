@@ -30,6 +30,9 @@
                 $('.main-svg').append(html);
 
                 $('[contenteditable="true"]').click(editableHandler);
+                $('svg').click(editableHandler);
+                $('img').click(editableHandler);
+
                 $('[data-set="true"').click(getToolsPanel);
 
                 $('aside').removeClass('sidebar--is-visible');
