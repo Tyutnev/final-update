@@ -2,10 +2,13 @@
 
 namespace frontend\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 
 class Img extends ActiveRecord
 {
+    public $file;
+
     /**
      * Лимит выборки изображений
      */
@@ -14,6 +17,13 @@ class Img extends ActiveRecord
     public static function tableName()
     {
         return '{{img}}';
+    }
+
+    public function rules()
+    {
+        return [
+            ['id_category', 'safe']
+        ];
     }
 
     /**
@@ -40,5 +50,16 @@ class Img extends ActiveRecord
     public static function getById($id)
     {
         return self::find()->where(['id' => $id])->one();
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $path = 'uploads/' . $this->file->baseName . '.' . $this->file->extension;
+            $this->file->saveAs($path);
+            return $path;
+        } else {
+            return false;
+        }
     }
 };

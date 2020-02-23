@@ -28,9 +28,9 @@ const updateTools = (event) => {
 
     for (attr in attrs) {
         if (currentEditable.attr(attr)) {
-            $(attrs[attr]).css('border', '3px solid #1626b5');
+            $(attrs[attr]).addClass('active-style-button');
         } else {
-            $(attrs[attr]).css('border', '0');
+            $(attrs[attr]).removeClass('active-style-button');
         }
     }
 
@@ -84,13 +84,13 @@ const toggleCss = (attrPointer, cssProperty, cssValueOn, cssValueOff, item = nul
     if (editableElement.attr(attrPointer)) {
         editableElement.css(cssProperty, cssValueOff);
         editableElement.removeAttr(attrPointer);
-        $(item).css('border', '0');
+        $(item).removeClass('active-style-button');
         return;
     }
 
     editableElement.attr(attrPointer, 'true');
     editableElement.css(cssProperty, cssValueOn);
-    $(item).css('border', '3px solid #1626b5');
+    $(item).addClass('active-style-button');
 }
 
 /**
@@ -135,7 +135,6 @@ const editColor = (event) => {
 const scaleCanvas = (event) => {
     let scale = +$('.scale').val();
     $('.main-svg').css('transform', `scale(${scale / 100})`);
-    console.log(scale / 100);
 }
 
 /**
@@ -149,6 +148,7 @@ const getToolsPanel = (event) => {
 
     if (type == 'text') $('.tools-panel-text').show();
     if (type == 'element') $('.tools-panel-text').show();
+    if (type == 'img') $('.tools-panel-file').show();
 }
 
 const removeNode = (event) => {
@@ -159,16 +159,12 @@ const removeNode = (event) => {
  * Загрузка файлов
  */
 $('[type="file"]').change((event) => {
-
-    console.log('Here');
-
-    let logo = $('[data-img="true"]');
     let img = $('[type="file"]')[0].files[0];
     let reader = new FileReader();
     reader.readAsDataURL(img);
 
     reader.onloadend = () => {
-        logo.attr('src', reader.result);
+        $(CURRENT_EDIT_ELEMENT).attr('src', reader.result);
     }
 });
 

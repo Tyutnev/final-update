@@ -29,11 +29,25 @@
                 $('.main-svg').empty();
                 $('.main-svg').append(html);
 
-                $('[contenteditable="true"]').click(editableHandler);
-                $('svg').click(editableHandler);
-                $('img').click(editableHandler);
+                let imgWidth = parseInt($('.main-svg').css('width'));
+                let canvasWidth = parseInt($('.container .h-100').css('width'));
 
-                $('[data-set="true"').click(getToolsPanel);
+                if (imgWidth > canvasWidth) {
+                    let scale = Math.round(canvasWidth * 90 / imgWidth);
+                    $('.scale').val(scale);
+                    $('.main-svg').css('transform', `scale(${scale / 100})`);
+                }
+
+                $('[data-set="true"]').click(editableHandler);
+                $('[data-set="true"]').click(getToolsPanel);
+
+                $('[data-type="text"]').dblclick((event) => {
+                    $(event.target).removeClass('draggable');
+                });
+
+                $('[data-type="text"]').blur((event) => {
+                    $(event.target).addClass('draggable');
+                });
 
                 $('aside').removeClass('sidebar--is-visible');
             }

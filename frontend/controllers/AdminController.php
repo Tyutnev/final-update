@@ -6,6 +6,7 @@ use Yii;
 use yii\web\Controller;
 use frontend\models\Img;
 use frontend\models\Html;
+use yii\web\UploadedFile;
 
 class AdminController extends Controller
 {
@@ -14,20 +15,22 @@ class AdminController extends Controller
         $img = new Img();
         $html = new Html();
 
-        if($img->load(Yii::$app->request->post()) && $html->load(Yii::$app->request->post()))
-        {
-            $html->content = Yii::$app->request->post()['Html']['content'];
-            $html->save();
-            $html = Html::find()->orderBy(['id' => SORT_DESC])->limit(1)->one();
+        if (Yii::$app->request->isPost && $html->load(Yii::$app->request->post())) {
+            
+            if(!$html->save()) return;
 
-            $img->src = Yii::$app->request->post()['Img']['src'];
-            $img->id_html = $html->id;
-            $img->id_category = Yii::$app->request->post()['Img']['id_category'];
+            $id_html = Html::getLast()->id;
 
-            if($img->save())
-            {
-                var_dump('Save');
-                die;
+            $img->file = UploadedFile::getInstance($img, 'file');
+            if ($path = $img->upload()) {
+                $img->src = $path;
+                $img->id_html = $id_html;
+                $img->load(Yii::$app->request->post());
+                if($img->save())
+                {
+                    var_dump('Шаблон загружен');
+                    return;
+                }
             }
         }
 

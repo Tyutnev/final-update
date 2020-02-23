@@ -1,10 +1,18 @@
 <?php
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+use frontend\models\Category;
 ?>
-<?php $form = ActiveForm::begin() ?>
-    <?= $form->field($img, 'src')->textInput(['placeholder' => 'Путь до обложки шаблона'])->label(false) ?>
-    <?= $form->field($img, 'id_category')->textInput(['placeholder' => 'Категория'])->label(false) ?>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+    <?= $form->field($img, 'file')->fileInput()->label(false) ?>
+    <?php
+
+        echo $form->field($img, 'id_category')->dropdownList(
+            Category::find()->select(['title', 'id'])->indexBy('id')->column(),
+            ['prompt'=>'Выбирите категорию']
+        )->label(false);
+
+    ?>
     <?= $form->field($html, 'content')->textInput(['placeholder' => 'HTML'])->label(false) ?>
     <?= Html::submitButton('Create', ['class' => 'btn btn-success']) ?>
     <?php if( Yii::$app->session->hasFlash('success') ): ?>

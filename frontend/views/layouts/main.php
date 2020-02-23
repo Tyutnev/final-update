@@ -22,7 +22,9 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
     <?= $content ?>
+</body>
 <?php $this->endBody() ?>
+</html>
 <script>
         // target elements with the "draggable" class
         interact('.draggable')
@@ -80,5 +82,4 @@ AppAsset::register($this);
         }
     </script>
 </body>
-</html>
 <?php $this->endPage() ?>
