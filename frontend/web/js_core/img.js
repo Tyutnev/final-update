@@ -69,7 +69,8 @@
      */
     const getImg = (category) => {
         let imgs = {};
-        let pivot = $(`.block-${category.title}`);
+        let pivot = $(".block-" + category.title);
+
         pivot = $(pivot[pivot.length - 1]).attr('data-id');
 
         $.ajax({
