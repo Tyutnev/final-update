@@ -28,3 +28,76 @@
     overflow-x: scroll!important;
     overflow-y: scroll!important;
 }
+
+.btn_main {
+    background: #FF464E!important;
+    color: #fff!important;
+}
+
+.shadow_none {
+    box-shadow: none!important;
+}
+
+.border-bottom {
+    box-shadow: none!important;
+    border-radius: 0px!important;
+    border-bottom: 1px solid #EBEBEB!important;
+    border-left: none!importnat;
+    border-right: none!important;
+    border-top: none!important;
+}
+
+.border-top {
+    box-shadow: none!important;
+    border-radius: 0px!important;
+    border-top: 1px solid #EBEBEB!important;
+}
+
+.plus_btn {
+    background: #fff!important;
+}
+
+
+.active-style-button {
+    background-color: #393939!important;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+
+.button-no-active:hover {
+    background-color: #f9f9f9;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+
+.active-style-button svg path {
+    fill: #fff!important;
+}
+
+.button-no-active {
+    width: 36px;
+    height: 36px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+button, 
+button:active, 
+button:focus {
+    outline: none!important;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #FF464E!important;
+    border-color: #FF464E!important;
+}
+
+.card[class*="border"] {
+    border: none;
+}

@@ -42,10 +42,24 @@ const updateTools = (event) => {
  * События начала редактирования текста
  */
 const editableHandler = (event) => {
+    let target = $(event.target);
+    let svg = ['path', 'g', 'svg'];
+
+    for (let i = 0; i < svg.length; i++) {
+        if (target.prop('tagName') == svg[i]) {
+            while (target.prop('tagName') != 'svg') {
+                target = target.parent();
+            }
+            continue;
+        }
+    }
+
+    console.log(target.prop('tagName'));
+
     //Убираем атрибут редактирования с прошлого редактируемого элемента
     $(CURRENT_EDIT_ELEMENT).attr(CURRENT_EDIT, 'false');
     //Указываем, что данный элемент редактируется
-    $(event.target).attr(CURRENT_EDIT, 'true');
+    target.attr(CURRENT_EDIT, 'true');
     updateTools();
     console.log('Update editable element');
 };
@@ -124,7 +138,10 @@ const editSizeText = (event) => {
  * @param {object} event 
  */
 const editColor = (event) => {
-    $('[data-edit-item="true"]').attr('stroke', $('.pcr-result').val());
+    if ($(CURRENT_EDIT_ELEMENT).prop('tagName') == 'svg') {
+        $(CURRENT_EDIT_ELEMENT).find('[data-edit-item="true"]').attr('stroke', $('.pcr-result').val());
+        return;
+    }
     $(CURRENT_EDIT_ELEMENT).css('color', $('.pcr-result').val());
 };
 
@@ -143,12 +160,23 @@ const scaleCanvas = (event) => {
  * @param {object} event 
  */
 const getToolsPanel = (event) => {
-    let type = $(event.target).attr('data-type');
+    let type = $(CURRENT_EDIT_ELEMENT).attr('data-type');
     $('.tools-panel').hide();
 
-    if (type == 'text') $('.tools-panel-text').show();
-    if (type == 'element') $('.tools-panel-text').show();
-    if (type == 'img') $('.tools-panel-file').show();
+    console.log("Type tools panel: " + type);
+
+    if (type == 'text') {
+        console.log('In text');
+        $('.tools-panel-text').show();
+    }
+    if (type == 'element') {
+        console.log('In element');
+        $('.tools-panel-element').show();
+    }
+    if (type == 'img') {
+        console.log('In img');
+        $('.tools-panel-file').show();
+    }
 }
 
 const removeNode = (event) => {
@@ -191,3 +219,7 @@ $('.size-tool-button').click((event) => {
     $('.scale').val(currentScale);
     $('.main-svg').css('transform', `scale(${currentScale / 100})`);
 })
+
+$('svg').click((event) => {
+    console.log('Here');
+});

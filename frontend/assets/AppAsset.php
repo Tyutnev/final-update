@@ -30,6 +30,7 @@ class AppAsset extends AssetBundle
     ];
 
     public $js = [
+        'js/new.js',
         'js/scripts.js',
         'js/scripts.min.js',
         'js/util.js',

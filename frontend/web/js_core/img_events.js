@@ -69,16 +69,13 @@
                 html = JSON.parse(html);
 
                 html.filter((font) => {
-                    $('.fonts-list').append(`
-                    <li data-src="${font.src}">
-                        <input data-src="${font.src}" class="fonts-item radio" type="radio" name="radioButton" id="radio1">
-                        <label data-src="${font.src}" for="radio1">${font.title}</label>
-                    </li>
+                    $('.list-group').append(`
+                    <button data-src="${font.src}" type="button" class="list-group-item list-group-item-action">${font.title}</button>
                     `);
                 })
 
-                $('.fonts-list').click((event) => {
-                    if (event.target.tagName != 'LABEL') return;
+                $('.list-group').click((event) => {
+                    if (event.target.tagName != 'BUTTON') return;
 
                     let pathToFont = $(event.target).attr('data-src');
                     let title = $(event.target).html();
