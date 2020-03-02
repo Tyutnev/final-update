@@ -60,46 +60,6 @@ $this->title = 'Страница редактирования';
                         </div>
                     </section>
 
-                    <section>
-                        <div class="container p-0 max-width-sm">
-
-                            <ul class="accordion  js-accordion" data-animation="on" data-multi-items="off">
-                                <li class="accordion__item accordion__item--is-open js-accordion__item">
-                                    <button class="pl-0 pr-0 accordion__header js-tab-focus" type="button">
-                                        <span class="accordion__header-title">Открытка</span>
-                                        <em aria-hidden="true" class="accordion__header-icon"><i></i></em>
-                                    </button>
-
-                                    <div class="accordion__panel js-accordion__panel">
-                                        <div class="pl-0 pr-0 accordion__panel-content">
-                                            <div class="text-component margin-bottom-md">
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum a ab quae quas optio ut officia quia? Modi at impedit dolorem est voluptatem facilis, beatae atque tenetur, soluta dolorum inventore sapiente laborum. Alias esse soluta porro distinctio aperiam, qui suscipit.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="accordion__item accordion__item--is-open js-accordion__item">
-                                    <button class="pl-0 pr-0 accordion__header js-tab-focus" type="button">
-                                        <span class="accordion__header-title">Открытка</span>
-                                        <em aria-hidden="true" class="accordion__header-icon"><i></i></em>
-                                    </button>
-
-                                    <div class="accordion__panel js-accordion__panel">
-                                        <div class="pl-0 pr-0 accordion__panel-content">
-                                            <div class="text-component margin-bottom-md">
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum a ab quae quas optio ut officia quia? Modi at impedit dolorem est voluptatem facilis, beatae atque tenetur, soluta dolorum inventore sapiente laborum. Alias esse soluta porro distinctio aperiam, qui suscipit.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-
-                            </ul>
-                        </div>
-                    </section>
-
-
 
 
 
