@@ -226,8 +226,6 @@ $this->title = 'Страница редактирования';
                             </div>
 
                             <div class="text-center flex-column">
-                                <!--    <p class="m-0 label_color">A</p> -->
-
                                 <button class=" btn color-picker button-studio btn--primary m"></button>
                             </div>
 

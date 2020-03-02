@@ -34,6 +34,10 @@ const updateTools = (event) => {
         }
     }
 
+    if (currentEditable.prop('tagName') == 'svg') {
+        $('.pcr-button').css('color', currentEditable.find('[data-edit-item="true"]').attr('stroke'));
+    }
+
     let fontSize = currentEditable.css('font-size').replace('px', '');
     $('.quantity').attr('value', fontSize);
 };
@@ -219,7 +223,3 @@ $('.size-tool-button').click((event) => {
     $('.scale').val(currentScale);
     $('.main-svg').css('transform', `scale(${currentScale / 100})`);
 })
-
-$('svg').click((event) => {
-    console.log('Here');
-});
