@@ -97,8 +97,7 @@
 
             let imgs = getImg(category);
             imgs.forEach(img => {
-                let category = '.block-' + category.title;
-                renderImage(img, category);
+                renderImage(img, ".block-" + category.title);
             })
         });
     };
