@@ -191,55 +191,38 @@ $this->title = 'Страница редактирования';
                     <!-- default panel -->
                     <div class="card w-100 a border-0 b tools-panel tools-panel-default border-top">
                         <div class="d-flex card-body index justify-content-around">
-
                             <p class="m-0 label_color">Выберите элемент</p>
-
-
                         </div>
                     </div>
-
-                    <!-- svg panel -->
-                    <div style="display: none;" class="card w-100 a border-0 b tools-panel tools-panel-element border-top">
-                        <div class="d-flex card-body index justify-content-around">
-                           
-                        <button id="style" class="delete-button button-no-active btn shadow_none btn--primary button-studio text-style">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 1H15C16.1046 1 17 1.89543 17 3V4H20C21.1046 4 22 4.89543 22 6V8C22 9.10457 21.1046 10 20 10H19.9199L19 21C19 22.1046 18.1046 23 17 23H7C5.89543 23 5 22.1046 5.00345 21.083L4.07987 10H4C2.89543 10 2 9.10457 2 8V6C2 4.89543 2.89543 4 4 4H7V3C7 1.89543 7.89543 1 9 1ZM4 6H7H17H20V8H4V6ZM6.08649 10H17.9132L17.0035 20.917L17 21H7L6.08649 10ZM15 3V4H9V3H15ZM13.4142 15L15.7071 17.2929L14.2929 18.7071L12 16.4142L9.70711 18.7071L8.29289 17.2929L10.5858 15L8.29289 12.7071L9.70711 11.2929L12 13.5858L14.2929 11.2929L15.7071 12.7071L13.4142 15Z" fill="#393939" fill-opacity="0.9"/>
-                            </svg>
-                        <div class="text-center flex-column">
-                            <button class=" btn color-picker button-studio btn--primary m"></button>
-                        </div>
-                    </div>
-
-
-
 
                     <!-- text panel -->
                     <div style="display: none;" class="card w-100 a border-0 b tools-panel tools-panel-text">
                         <div class="d-flex card-body index justify-content-around c" data-tools="defalt">
-                            <div class="flex flex-column items-start ">
-                                <!--  <label class="form-label label_color rgin-bottom-xxxs m-auto" for="selectThis">Шрифт</label> -->
 
+                            <!-- Container -->
+                            <div class="flex flex-column items-start tool-item font-tool">
                                 <button class="shadow_none btn_main fonts btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                     Шрифт
                                 </button>
                             </div>
 
-                            <div class="text-center flex-column">
+                            <!-- Container -->
+                            <div class="text-center flex-column tool-item color-tool">
                                 <button class=" btn color-picker button-studio btn--primary m"></button>
                             </div>
 
-                            <div class="text-center flex-column">
+                            <!-- Container -->
+                            <div class="text-center flex-column tool-item size-tool">
                                 <!-- <p class="m-0 label_color">Размер</p> -->
                                 <div class="def-number-input number-input safari_only">
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
                                     <input class="quantity" min="0" name="quantity" value="1" type="number">
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus size-tool"></button>
                                 </div>
-
                             </div>
 
-                            <div class="text-center flex-column">
+                            <!-- Container -->
+                            <div class="text-center flex-column tool-item style-tool">
                                 <!--    <p class="m-0 label_color">Стиль</p> -->
                                 <button id="underline" class="button-no-active shadow_none btn btn--primary button-studio">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -248,68 +231,38 @@ $this->title = 'Страница редактирования';
                                         </g>
                                     </svg>
                                 </button>
-                                <button id="weight" class="button-no-active btn shadow_none btn--primary button-studio text-style"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4297 11.348C18.5154 12.1296 20 14.1414 20 16.5C20 19.5376 17.5376 22 14.5 22H6V2H12.5C15.5376 2 18 4.46243 18 7.5C18 8.99801 17.4011 10.3562 16.4297 11.348ZM12.5 11C14.433 11 16 9.433 16 7.5C16 5.567 14.433 4 12.5 4H8V11H12.5ZM8 20V13H14.5C16.433 13 18 14.567 18 16.5C18 18.433 16.433 20 14.5 20H8Z" fill="#393939" />
-                                    </svg></button>
-                                <button id="style" class="button-no-active btn shadow_none btn--primary button-studio text-style"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M14.8022 4L11.2466 20H15V22H5.5V20H9.19783L12.7534 4H9.5V2H19V4H14.8022Z" fill="#393939" />
-                                    </svg></button>
-
-                            </div>
-
-                            <div class="text-center flex-column">
-                                <!--    <p class="m-0 label_color">Действие</p> -->
-                                <!--   <button class="shadow_none delete-button btn_main fonts btn btn-primary">Удалить элемент</button> -->
-
-
-                                <button id="style" class="delete-button button-no-active btn shadow_none btn--primary button-studio text-style">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 1H15C16.1046 1 17 1.89543 17 3V4H20C21.1046 4 22 4.89543 22 6V8C22 9.10457 21.1046 10 20 10H19.9199L19 21C19 22.1046 18.1046 23 17 23H7C5.89543 23 5 22.1046 5.00345 21.083L4.07987 10H4C2.89543 10 2 9.10457 2 8V6C2 4.89543 2.89543 4 4 4H7V3C7 1.89543 7.89543 1 9 1ZM4 6H7H17H20V8H4V6ZM6.08649 10H17.9132L17.0035 20.917L17 21H7L6.08649 10ZM15 3V4H9V3H15ZM13.4142 15L15.7071 17.2929L14.2929 18.7071L12 16.4142L9.70711 18.7071L8.29289 17.2929L10.5858 15L8.29289 12.7071L9.70711 11.2929L12 13.5858L14.2929 11.2929L15.7071 12.7071L13.4142 15Z" fill="#393939" fill-opacity="0.9" />
-                                    </svg>
-
+                                <button id="weight" class="button-no-active btn shadow_none btn--primary button-studio text-style">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4297 11.348C18.5154 12.1296 20 14.1414 20 16.5C20 19.5376 17.5376 22 14.5 22H6V2H12.5C15.5376 2 18 4.46243 18 7.5C18 8.99801 17.4011 10.3562 16.4297 11.348ZM12.5 11C14.433 11 16 9.433 16 7.5C16 5.567 14.433 4 12.5 4H8V11H12.5ZM8 20V13H14.5C16.433 13 18 14.567 18 16.5C18 18.433 16.433 20 14.5 20H8Z" fill="#393939" />
+                                </svg>
                                 </button>
-
-
+                                <button id="style" class="button-no-active btn shadow_none btn--primary button-studio text-style">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.8022 4L11.2466 20H15V22H5.5V20H9.19783L12.7534 4H9.5V2H19V4H14.8022Z" fill="#393939" />
+                                    </svg>
+                                </button>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- file-panel -->
-                    <div style="display: none;" class="card w-100 a border-0 b tools-panel tools-panel-file">
-                        <div class="d-flex card-body index justify-content-around c">
-                            <div class="text-center flex-column">
-                                <!--   <p class="label_color m-0">Логотип</p> -->
-
-
-                                <!--   <input type="file" class="btn  btn--primary button-studio"/>-->
-
+                            <!-- Container -->
+                            <div class="text-center flex-column tool-item file-tool">
                                 <fieldset class="file-upload">
                                     <label for="upload1" class="btn_main shadow_none file-upload__label btn btn--subtle h-36">
                                         <span class="file-upload__text file-upload__text--has-max-width">Upload a file</span>
                                     </label>
-
                                     <input type="file" class="file-upload__input" name="upload1" id="upload1">
                                 </fieldset>
                             </div>
 
-                            <div class="text-center flex-column">
-                                <!--       <p class="m-0 label_color">Действие</p> -->
-                                <!--  <button class="shadow_none delete-button btn_main fonts btn btn-primary">Удалить элемент</button>-->
-
-
+                            <!-- Container -->
+                            <div class="text-center flex-column tool-item delete-tool">
                                 <button id="style" class="delete-button button-no-active btn shadow_none btn--primary button-studio text-style">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M9 1H15C16.1046 1 17 1.89543 17 3V4H20C21.1046 4 22 4.89543 22 6V8C22 9.10457 21.1046 10 20 10H19.9199L19 21C19 22.1046 18.1046 23 17 23H7C5.89543 23 5 22.1046 5.00345 21.083L4.07987 10H4C2.89543 10 2 9.10457 2 8V6C2 4.89543 2.89543 4 4 4H7V3C7 1.89543 7.89543 1 9 1ZM4 6H7H17H20V8H4V6ZM6.08649 10H17.9132L17.0035 20.917L17 21H7L6.08649 10ZM15 3V4H9V3H15ZM13.4142 15L15.7071 17.2929L14.2929 18.7071L12 16.4142L9.70711 18.7071L8.29289 17.2929L10.5858 15L8.29289 12.7071L9.70711 11.2929L12 13.5858L14.2929 11.2929L15.7071 12.7071L13.4142 15Z" fill="#393939" fill-opacity="0.9" />
                                     </svg>
-
                                 </button>
-
-
-
-
                             </div>
-                        </div>
 
+                        </div>
                     </div>
 
 

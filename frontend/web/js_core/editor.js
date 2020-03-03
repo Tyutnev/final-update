@@ -165,21 +165,29 @@ const scaleCanvas = (event) => {
  */
 const getToolsPanel = (event) => {
     let type = $(CURRENT_EDIT_ELEMENT).attr('data-type');
-    $('.tools-panel').hide();
+    $('.tools-panel-default').hide();
+    $('.tools-panel-text').show();
+    $('.tool-item').hide();
 
     console.log("Type tools panel: " + type);
 
     if (type == 'text') {
         console.log('In text');
-        $('.tools-panel-text').show();
+        $('.font-tool').show();
+        $('.color-tool').show();
+        $('.size-tool').show();
+        $('.style-tool').show();
+        $('.delete-tool').show();
     }
     if (type == 'element') {
         console.log('In element');
-        $('.tools-panel-element').show();
+        $('.color-tool').show();
+        $('.delete-tool').show();
     }
     if (type == 'img') {
         console.log('In img');
-        $('.tools-panel-file').show();
+        $('.file-tool').show();
+        $('.delete-tool').show();
     }
 }
 
