@@ -25,7 +25,7 @@ AppAsset::register($this);
 </body>
 <?php $this->endBody() ?>
 </html>
-<script>
+<script>    
         // target elements with the "draggable" class
         interact('.draggable')
             .draggable({

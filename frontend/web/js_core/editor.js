@@ -36,6 +36,8 @@ const updateTools = (event) => {
 
     if (currentEditable.prop('tagName') == 'svg') {
         $('.pcr-button').css('color', currentEditable.find('[data-edit-item="true"]').attr('stroke'));
+    } else {
+        $('.pcr-button').css('color', currentEditable.css('color'));
     }
 
     let fontSize = currentEditable.css('font-size').replace('px', '');
@@ -230,4 +232,16 @@ $('.size-tool-button').click((event) => {
 
     $('.scale').val(currentScale);
     $('.main-svg').css('transform', `scale(${currentScale / 100})`);
-})
+});
+
+$('.pcr-swatches').click((event) => {
+    if (event.target.tagName != 'BUTTON') return;
+
+    let color = $(event.target).css('color');
+
+    if ($(CURRENT_EDIT_ELEMENT).prop('tagName') == 'svg') {
+        $(CURRENT_EDIT_ELEMENT).find('[data-edit-item="true"]').attr('stroke', color);
+        return;
+    }
+    $(CURRENT_EDIT_ELEMENT).css('color', color);
+});
