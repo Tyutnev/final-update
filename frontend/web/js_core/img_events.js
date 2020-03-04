@@ -39,7 +39,7 @@
                     let scale = Math.round(canvasWidth * 90 / imgWidth);
                     $('.scale').val(scale);
                     $('.main-svg').css('transform', `scale(${scale / 100})`);
-                } else if ((canvasWidth - imgWidth) < 100) {
+                } else if ((canvasWidth - imgWidth) < 300) {
                     let scale = canvasWidth - imgWidth;
                     $('.scale').val(scale);
                     $('.main-svg').css('transform', `scale(${scale / 100})`);
