@@ -39,13 +39,9 @@
                     let scale = Math.round(canvasWidth * 90 / imgWidth);
                     $('.scale').val(scale);
                     $('.main-svg').css('transform', `scale(${scale / 100})`);
-                } else if ((canvasWidth - imgWidth) < 300) {
-                    let scale = canvasWidth - imgWidth;
-                    $('.scale').val(scale);
-                    $('.main-svg').css('transform', `scale(${scale / 100})`);
                 } else {
-                    $('.scale').val(100);
-                    $('.main-svg').css('transform', `scale(${1})`);
+                    $('.scale').val(70);
+                    $('.main-svg').css('transform', `scale(${0.7})`);
                 }
 
                 $('[data-set="true"]').click(editableHandler);
