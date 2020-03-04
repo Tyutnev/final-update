@@ -32,10 +32,20 @@
                 let imgWidth = parseInt($('.main-svg').css('width'));
                 let canvasWidth = parseInt($('.container .h-100').css('width'));
 
+                console.log("Img width: " + imgWidth);
+                console.log("Canvas width: " + canvasWidth);
+
                 if (imgWidth > canvasWidth) {
                     let scale = Math.round(canvasWidth * 90 / imgWidth);
                     $('.scale').val(scale);
                     $('.main-svg').css('transform', `scale(${scale / 100})`);
+                } else if ((canvasWidth - imgWidth) < 100) {
+                    let scale = canvasWidth - imgWidth;
+                    $('.scale').val(scale);
+                    $('.main-svg').css('transform', `scale(${scale / 100})`);
+                } else {
+                    $('.scale').val(100);
+                    $('.main-svg').css('transform', `scale(${1})`);
                 }
 
                 $('[data-set="true"]').click(editableHandler);
