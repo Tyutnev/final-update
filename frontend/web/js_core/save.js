@@ -1,5 +1,7 @@
 (function() {
     const saveAsPng = () => {
+        let oldScale = $('.scale').val();
+        $('.main-svg').css('transform', `scale(1)`);
         var container = document.querySelector('.main-svg');
         html2canvas(container, {
             useCORS: true
@@ -33,9 +35,15 @@
                 $('#export-image-container').remove()
             }
         });
+
+        $('.scale').val(oldScale);
+        $('.main-svg').css('transform', `scale(${oldScale / 100})`);
     };
 
     const saveAsJpeg = () => {
+        let oldScale = $('.scale').val();
+        $('.main-svg').css('transform', `scale(1)`);
+
         var container = document.querySelector('.main-svg');
         html2canvas(container, {
             useCORS: true
@@ -69,6 +77,9 @@
                 $('#export-image-container').remove()
             }
         });
+
+        $('.scale').val(oldScale);
+        $('.main-svg').css('transform', `scale(${oldScale / 100})`);
     }
 
     $('.format-save-item').click((event) => {
