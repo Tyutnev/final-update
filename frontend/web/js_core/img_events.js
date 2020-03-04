@@ -41,7 +41,7 @@
                     $('.main-svg').css('transform', `scale(${scale / 100})`);
                 } else {
                     $('.scale').val(70);
-                    $('.main-svg').css('transform', `scale(${0.7})`);
+                    $('.main-svg').css('transform', `scale(0.7)`);
                 }
 
                 $('[data-set="true"]').click(editableHandler);
