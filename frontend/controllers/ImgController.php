@@ -50,6 +50,7 @@ class ImgController extends Controller
             $img = Img::getById((int)Yii::$app->request->get('id'));
             $html = Html::getById($img->id_html);
             echo json_encode($html->content);
+            die;
         }
     }
 
