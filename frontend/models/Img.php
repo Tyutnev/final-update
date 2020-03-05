@@ -8,6 +8,9 @@ use yii\db\ActiveRecord;
 class Img extends ActiveRecord
 {
     public $file;
+    public $files;
+
+    const DEFAULT_LIMIT = 10;
 
     /**
      * Лимит выборки изображений
@@ -42,6 +45,17 @@ class Img extends ActiveRecord
         return $sqlState->orderBy(['id' => SORT_DESC])->limit(self::LIMIT)->asArray()->all();
     }
 
+    public static function get($pivot = null)
+    {
+        $state = self::find();
+
+        if($pivot) $state->where(['<', 'id', $pivot]);
+
+        return $state->limit(self::DEFAULT_LIMIT)->
+                       orderBy(['id' => SORT_DESC])->
+                       all();
+    }
+
     /**
      * @param int $id
      * 
@@ -58,6 +72,18 @@ class Img extends ActiveRecord
             $path = 'uploads/' . $this->file->baseName . '.' . $this->file->extension;
             $this->file->saveAs($path);
             return $path;
+        } else {
+            return false;
+        }
+    }
+
+    public function uploadResources()
+    {
+        if ($this->validate()) { 
+            foreach ($this->files as $file) {
+                $file->saveAs('uploads/' . $file->baseName . '.' . $file->extension);
+            }
+            return true;
         } else {
             return false;
         }

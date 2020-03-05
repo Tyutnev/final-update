@@ -106,3 +106,42 @@
         $('.font-container').removeClass('show');
     })
 })();
+
+$('.update-html').click((event) => {
+    $.ajax({
+        type: 'POST',
+        url: '/admin/update',
+        data: {
+            id: $('.html-id').html(),
+            content: $('.html-content').html()
+        },
+        success: (html) => {
+            html = JSON.parse(html);
+
+            if (html.status == 'success') {
+                $('.alert-update').fadeIn(300);
+            }
+        }
+    })
+})
+
+$('.delete-template').click((event) => {
+    $(event.target).next().fadeIn(300);
+});
+
+$('.delete-true').click((event) => {
+    $.ajax({
+        type: 'POST',
+        url: '/admin/delete',
+        data: {
+            id: $(event.target).attr('data-id')
+        },
+        success: (html) => {
+            $(event.target).parent().parent().parent().parent().fadeOut(300);
+        }
+    })
+})
+
+$('.delete-false').click((event) => {
+    $(event.target).parent().fadeOut(300);
+})

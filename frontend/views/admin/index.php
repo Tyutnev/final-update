@@ -1,24 +1,29 @@
-<?php
-use yii\widgets\ActiveForm;
-use yii\helpers\Html;
-use frontend\models\Category;
-?>
-<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
-    <?= $form->field($img, 'file')->fileInput()->label(false) ?>
-    <?php
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Идентификатор</th>
+      <th scope="col">Обложка</th>
+      <th scope="col">Действия</th>
+    </tr>
+  </thead>
+  <tbody>
 
-        echo $form->field($img, 'id_category')->dropdownList(
-            Category::find()->select(['title', 'id'])->indexBy('id')->column(),
-            ['prompt'=>'Выбирите категорию']
-        )->label(false);
-
-    ?>
-    <?= $form->field($html, 'content')->textInput(['placeholder' => 'HTML'])->label(false) ?>
-    <?= Html::submitButton('Create', ['class' => 'btn btn-success']) ?>
-    <?php if( Yii::$app->session->hasFlash('success') ): ?>
- <div class="alert alert-success alert-dismissible" role="alert">
- <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
- <?php echo Yii::$app->session->getFlash('success'); ?>
- </div>
-<?php endif;?>
-<?php ActiveForm::end() ?>
+    <?php foreach($imgs as $img): ?>
+    <tr>
+      <th><?= $img->id ?></th>
+      <td><img src="<?= $img->src ?>" width="200"></td>
+      <td><a class="btn btn-primary" href="/admin/detail/<?= $img->id ?>">Изменить</a></td>
+      <td>
+            <div>
+                <a class="btn btn-danger delete-template" style="cursor:pointer;">Удалить</a>
+                <div class="alert-delete" style="display: none;">
+                    <span>Вы действительно хотите удалить шаблон?</span>
+                    <button class="btn btn-danger delete-true" data-id="<?= $img->id ?>">Да</button>
+                    <button class="btn btn-success delete-false">Нет</button>
+                </div>
+            </div>
+      </td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
