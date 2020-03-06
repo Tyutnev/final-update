@@ -54,7 +54,7 @@ AppAsset::register($this);
                 // call this function on every dragend event
                 onend: function(event) {
                     $('[data-set="true"]').on('selectstart', (event) => {
-                        return true;
+                        event.defaultPrevented();
                     });
 
 
