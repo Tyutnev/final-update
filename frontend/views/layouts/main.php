@@ -45,14 +45,16 @@ AppAsset::register($this);
                 autoScroll: true,
 
                 onstart: function(event) {
+                    $('.main-svg').addClass('unselectable');
                     console.log('onstart');
-
                 },
 
                 // call this function on every dragmove event
                 onmove: dragMoveListener,
                 // call this function on every dragend event
                 onend: function(event) {
+                    $('.main-svg').removeClass('unselectable');
+
                     console.log('onend');
                     var textEl = event.target.querySelector('p');
 
