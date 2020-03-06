@@ -53,9 +53,9 @@ AppAsset::register($this);
                 onmove: dragMoveListener,
                 // call this function on every dragend event
                 onend: function(event) {
-                    $('[data-set="true"]').css('-webkit-user-select', '');
-                    $('[data-set="true"]').css('-moz-user-select', '');
-                    $('[data-set="true"]').css('-ms-user-select', '');
+                    $('[data-set="true"]').onselectstart((event) => {
+                        return true;
+                    });
 
                     console.log('onend');
                     var textEl = event.target.querySelector('p');
@@ -68,9 +68,9 @@ AppAsset::register($this);
             });
 
         function dragMoveListener(event) {
-            $('[data-set="true"]').css('-webkit-user-select', 'none');
-            $('[data-set="true"]').css('-moz-user-select', 'none');
-            $('[data-set="true"]').css('-ms-user-select', 'none');
+            $('[data-set="true"]').onselectstart((event) => {
+                return false;
+            });
 
             console.log('dragMoveListener');
             var target = event.target,
