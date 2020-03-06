@@ -185,17 +185,22 @@ const getToolsPanel = (event) => {
         $('.size-tool').show();
         $('.style-tool').show();
         $('.delete-tool').show();
+        return;
     }
     if (type == 'element') {
         console.log('In element');
         $('.color-tool').show();
         $('.delete-tool').show();
+        return;
     }
     if (type == 'img') {
         console.log('In img');
         $('.file-tool').show();
         $('.delete-tool').show();
+        return;
     }
+
+    $('.tools-panel-default').show();
 }
 
 const removeNode = (event) => {
