@@ -35,7 +35,11 @@ const updateTools = (event) => {
     }
 
     if (currentEditable.prop('tagName') == 'svg') {
-        $('.pcr-button').css('color', currentEditable.find('[data-edit-item="true"]').attr('stroke'));
+        if (currentEditable.find('[data-edit-item="true"]').attr('stroke')) {
+            $('.pcr-button').css('color', currentEditable.find('[data-edit-item="true"]').attr('stroke'));
+        } else {
+            $('.pcr-button').css('color', currentEditable.find('[data-edit-item="true"]').attr('fill'));
+        }
     } else {
         $('.pcr-button').css('color', currentEditable.css('color'));
     }
@@ -146,6 +150,7 @@ const editSizeText = (event) => {
 const editColor = (event) => {
     if ($(CURRENT_EDIT_ELEMENT).prop('tagName') == 'svg') {
         $(CURRENT_EDIT_ELEMENT).find('[data-edit-item="true"]').attr('stroke', $('.pcr-result').val());
+        $(CURRENT_EDIT_ELEMENT).find('[data-edit-item="true"]').attr('fill', $('.pcr-result').val());
         return;
     }
     $(CURRENT_EDIT_ELEMENT).css('color', $('.pcr-result').val());
