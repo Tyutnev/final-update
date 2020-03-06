@@ -160,7 +160,7 @@ $this->title = 'Страница редактирования';
         <div class="container h-100">
 
             <div class="row over justify-content-center h-100">
-                <div class="align-self-center main-svg">
+                <div class="align-self-center main-svg unselectable">
 
 
                 </div>

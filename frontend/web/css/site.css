@@ -124,7 +124,7 @@ a.desc:after {
     outline: none;
 }
 
-.unselectable {
+div[data-set="true"] {
     -webkit-touch-callout: none;
     /* iOS Safari */
     -webkit-user-select: none;
@@ -138,4 +138,5 @@ a.desc:after {
     user-select: none;
     /* Non-prefixed version, currently
                               not supported by any browser */
+    touch-action: none;
 }
