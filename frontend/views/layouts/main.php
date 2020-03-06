@@ -53,11 +53,6 @@ AppAsset::register($this);
                 onmove: dragMoveListener,
                 // call this function on every dragend event
                 onend: function(event) {
-                    $('[data-set="true"]').on('selectstart', (event) => {
-                        event.defaultPrevented();
-                    });
-
-
                     console.log('onend');
                     var textEl = event.target.querySelector('p');
 
@@ -69,10 +64,6 @@ AppAsset::register($this);
             });
 
         function dragMoveListener(event) {
-            $('[data-set="true"]').on('selectstart', (event) => {
-                return false;
-            });
-
             console.log('dragMoveListener');
             var target = event.target,
                 // keep the dragged position in the data-x/data-y attributes
