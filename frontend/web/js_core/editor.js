@@ -200,7 +200,7 @@ const getToolsPanel = (event) => {
         return;
     }
 
-    $('.tools-panel-default').hide();
+    $('.tools-panel-text').hide();
     $('.tool-item').hide();
     $('.tools-panel-default').show();
 }
