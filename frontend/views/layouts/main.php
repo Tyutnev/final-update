@@ -67,19 +67,19 @@ AppAsset::register($this);
 
     function dragMoveListener(event) {
         console.log('dragMoveListener');
-        var target = event.target,
-            // keep the dragged position in the data-x/data-y attributes
-            x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-            y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+            var target = event.target,
+                // keep the dragged position in the data-x/data-y attributes
+                x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+                y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
-        // translate the element
-        target.style.webkitTransform =
-            target.style.transform =
-            'translate(' + x + 'px, ' + y + 'px)';
+            // translate the element
+            target.style.webkitTransform =
+                target.style.transform =
+                'translate(' + x * (1 / ($('.scale').val() / 100)) + 'px, ' + y * (1 / ($('.scale').val() / 100)) + 'px)';
 
-        // update the position attributes
-        target.setAttribute('data-x', x);
-        target.setAttribute('data-y', y);
+            // update the position attributes
+            target.setAttribute('data-x', x);
+            target.setAttribute('data-y', y);
     }
 
     interact('.resize-drag')
