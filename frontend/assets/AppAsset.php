@@ -47,7 +47,11 @@ class AppAsset extends AssetBundle
         'js_core/img.js',
         'js_core/img_events.js',
         'js_core/save.js',
-        '//cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js' //Library for interact
+        '//cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js', //Library for interact
+        'node_modules/svg2pdf.js/dist/svg2pdf.js',
+        'js_core/FileSaver.js',
+        'js_core/jspdf.js',
+        'https://unpkg.com/jspdf@latest/dist/jspdf.min.js'
     ];
     
     public $depends = [
