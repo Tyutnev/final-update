@@ -213,6 +213,19 @@ const addTextNode = (event) => {
     $('.main-svg').append(`
     <div style="display: inline-block" contenteditable="true" class="draggable" data-set="true" data-type="text">Ваш текст</div>
     `);
+
+    $('[data-set="true"]').click(editableHandler);
+    $('[data-set="true"]').click(getToolsPanel);
+
+    $('[data-type="text"]').dblclick((event) => {
+        $(event.target).removeClass('draggable');
+    });
+
+    $('[data-type="text"]').blur((event) => {
+        $(event.target).addClass('draggable');
+    });
+
+    $('aside').removeClass('sidebar--is-visible');
 }
 
 /**
