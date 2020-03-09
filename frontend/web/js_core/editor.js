@@ -211,7 +211,7 @@ const removeNode = (event) => {
 
 const addTextNode = (event) => {
     $('.main-svg').append(`
-    <div contenteditable="true" class="draggable" data-set="true" data-type="text">Ваш текст</div>
+    <div style="display: inline-block" contenteditable="true" class="draggable" data-set="true" data-type="text">Ваш текст</div>
     `);
 }
 
