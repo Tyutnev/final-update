@@ -129,7 +129,8 @@ $this->title = 'Страница редактирования';
                     </div>
 
                     <div class="text-center flex-column">
-                        <button class="button-no-active shadow_none save btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 
+                    <button class="button-no-active shadow_none save btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             +
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
