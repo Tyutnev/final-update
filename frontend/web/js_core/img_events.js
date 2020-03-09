@@ -61,10 +61,9 @@
     });
 
     $('.fonts').click((event) => {
-        $('.format-container').addClass('collapse');
-        $('.format-container').removeClass('show');
+        $('.category-section').hide();
+        $('.font-section').show();
 
-        $('.fonts-list').empty();
         $.ajax({
             type: 'GET',
             url: '/img/font',
@@ -75,12 +74,12 @@
                 html = JSON.parse(html);
 
                 html.filter((font) => {
-                    $('.list-group').append(`
+                    $('.fonts-list').append(`
                     <button data-src="${font.src}" type="button" class="list-group-item list-group-item-action">${font.title}</button>
                     `);
                 })
 
-                $('.list-group').click((event) => {
+                $('.fonts-list').click((event) => {
                     if (event.target.tagName != 'BUTTON') return;
 
                     let pathToFont = $(event.target).attr('data-src');
@@ -144,4 +143,10 @@ $('.delete-true').click((event) => {
 
 $('.delete-false').click((event) => {
     $(event.target).parent().fadeOut(300);
-})
+});
+
+$('.category-button').click((event) => {
+    $('.font-section').hide();
+    $('.category-section').show();
+    $('.fonts-list').empty();
+});

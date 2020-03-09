@@ -83,30 +83,13 @@
     }
 
     const saveAsPdf = () => {
-        let oldScale = $('.scale').val();
-        $('.main-svg').css('transform', `scale(1)`);
-
-        const svgElement = document.querySelector('.main-svg');
-        const width = parseInt($(svgElement).css('width')),
-            height = parseInt($(svgElement).css('height'));
-
-        // create a new jsPDF instance
-        const pdf = new jsPDF('l', 'pt', [width, height]);
-
-        // render the svg element
-        svg2pdf(svgElement, pdf, {
-            xOffset: 0,
-            yOffset: 0
-        });
-
-        // get the data URI
-        const uri = pdf.output('datauristring');
-
-        // or simply save the created pdf
-        pdf.save('image.pdf');
-
-        $('.scale').val(oldScale);
-        $('.main-svg').css('transform', `scale(${oldScale / 100})`);
+        $.ajax({
+            type: 'POST',
+            url: '/img/pdf',
+            data: {
+                html: $('.main-svg').html()
+            }
+        })
     }
 
     $('.format-save-item').click((event) => {

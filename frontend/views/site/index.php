@@ -49,7 +49,7 @@ $this->title = 'Страница редактирования';
 
 
 
-                    <section>
+                    <section class="category-section">
                         <div class="container m-0 p-0 max-width-sm">
 
                             <ul class="accordion  js-accordion category-container mb-0" data-animation="on" data-multi-items="off">
@@ -60,7 +60,19 @@ $this->title = 'Страница редактирования';
                         </div>
                     </section>
 
-
+                    <section class="font-section" style="display: none;">
+                        <div class="container m-0 p-0 max-width-sm">
+                            <ul class="fonts-list">
+                                
+                            </ul>
+                            <style>
+                                .fonts-list {
+                                    margin-top: 10px;
+                                }
+                            </style>
+                        </div>
+                        <button class="btn btn-primary category-button">Вернуться к категориям</button>
+                    </section>
 
 
 
@@ -117,6 +129,13 @@ $this->title = 'Страница редактирования';
                     </div>
 
                     <div class="text-center flex-column">
+                        <button class="button-no-active shadow_none save btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            +
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
+                            <button class="dropdown-item add-item" value="text" type="button">Текст</button>
+                        </div>
+                                
 
                         <button class="button-no-active shadow_none btn btn--primary button-studio"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C12 4.2874 12.0303 4.5678 12.0879 4.838L7.0169 7.3735C6.2836 6.5319 5.2039 6 4 6C1.79086 6 0 7.7909 0 10C0 12.2091 1.79086 14 4 14C5.2039 14 6.2836 13.4681 7.0169 12.6265L12.0879 15.162C12.0303 15.4322 12 15.7126 12 16C12 18.2091 13.7909 20 16 20C18.2091 20 20 18.2091 20 16C20 13.7909 18.2091 12 16 12C14.7961 12 13.7164 12.5319 12.9831 13.3735L7.9121 10.838C7.9697 10.5678 8 10.2874 8 10C8 9.7126 7.9697 9.4322 7.9121 9.162L12.9831 6.6265C13.7164 7.4681 14.7961 8 16 8C18.2091 8 20 6.2091 20 4C20 1.79086 18.2091 0 16 0C13.7909 0 12 1.79086 12 4ZM6 10C6 11.1046 5.1046 12 4 12C2.8954 12 2 11.1046 2 10C2 8.8954 2.8954 8 4 8C5.1046 8 6 8.8954 6 10ZM16 6C17.1046 6 18 5.1046 18 4C18 2.8954 17.1046 2 16 2C14.8954 2 14 2.8954 14 4C14 5.1046 14.8954 6 16 6ZM18 16C18 17.1046 17.1046 18 16 18C14.8954 18 14 17.1046 14 16C14 14.8954 14.8954 14 16 14C17.1046 14 18 14.8954 18 16Z" fill="#393939" />
@@ -201,7 +220,7 @@ $this->title = 'Страница редактирования';
 
                             <!-- Container -->
                             <div class="flex flex-column items-start tool-item font-tool">
-                                <button class="shadow_none btn_main fonts btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <button class="shadow_none btn_main fonts btn btn-primary" type="button">
                                     Шрифт
                                 </button>
                             </div>

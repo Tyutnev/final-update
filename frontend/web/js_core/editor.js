@@ -209,6 +209,12 @@ const removeNode = (event) => {
     $(CURRENT_EDIT_ELEMENT).remove();
 }
 
+const addTextNode = (event) => {
+    $('.main-svg').append(`
+    <div contenteditable="true" class="draggable" data-set="true" data-type="text">Ваш текст</div>
+    `);
+}
+
 /**
  * Загрузка файлов
  */
@@ -257,3 +263,9 @@ $('.pcr-swatches').click((event) => {
     }
     $(CURRENT_EDIT_ELEMENT).css('color', color);
 });
+
+$('.add-item').click((event) => {
+    if ($(event.target).attr('value') == 'text') {
+        addTextNode();
+    }
+})

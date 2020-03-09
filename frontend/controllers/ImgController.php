@@ -8,6 +8,7 @@ use frontend\models\Img;
 use frontend\models\Category;
 use frontend\models\Html;
 use common\models\Font;
+use Dompdf\Dompdf;
 
 class ImgController extends Controller
 {
