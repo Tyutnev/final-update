@@ -210,8 +210,31 @@ const removeNode = (event) => {
 }
 
 const addTextNode = (event) => {
-    $('.main-svg').append(`
-    <div style="display: inline-block" contenteditable="true" class="draggable" data-set="true" data-type="text">Ваш текст</div>
+    let width = (parseInt($('.main-svg').css('width')) / 2) + 'px';
+    let height = (parseInt($('.main-svg').css('height')) / 2) + 'px';
+    const defaultText = 'Ваш текст';
+
+    console.log(width);
+    console.log(height);
+
+    $('.main-svg').prepend(`
+    <div style="
+            position: absolute;
+            margin-left: ${width};
+            margin-top: ${height};
+            z-index: 10;
+        "
+
+         contenteditable="true" 
+         class="draggable" 
+         data-set="true" 
+         data-type="text">
+         
+         <span style="font-size: 25px; color: #000" data-set="true" contenteditable="true" data-type="text">
+            ${defaultText}
+         </span>
+         
+    </div>
     `);
 
     $('[data-set="true"]').click(editableHandler);
