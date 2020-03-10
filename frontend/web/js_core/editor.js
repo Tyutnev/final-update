@@ -70,6 +70,12 @@ const editableHandler = (event) => {
     $(CURRENT_EDIT_ELEMENT).attr(CURRENT_EDIT, 'false');
     //Указываем, что данный элемент редактируется
     target.attr(CURRENT_EDIT, 'true');
+
+    if ($(CURRENT_EDIT_ELEMENT).attr('data-default') == 'true') {
+        $(CURRENT_EDIT_ELEMENT).html('');
+        $(CURRENT_EDIT_ELEMENT).attr('data-default', 'false');
+    }
+
     updateTools();
     console.log('Update editable element');
 };
@@ -230,7 +236,9 @@ const addTextNode = (event) => {
          contenteditable="true" 
          class="draggable" 
          data-set="true" 
-         data-type="text">
+         data-type="text"
+         data-default="true"
+         >
          
          ${defaultText}
          
