@@ -307,3 +307,12 @@ $('.add-item').click((event) => {
         addTextNode();
     }
 })
+
+$('.main-svg').click((event) => {
+    let element = $(event.target);
+
+    if (element.attr('data-set')) return;
+    $('.tools-panel-text').hide();
+    $('.tool-item').hide();
+    $('.tools-panel-default').show();
+})
