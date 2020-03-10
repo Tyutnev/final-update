@@ -53,7 +53,15 @@
      * @param {string} container
      */
     const renderImage = (image, container) => {
-        $(container).append(`
+        console.log($(container).last().children().length);
+        if ($(container).last().children().length == 3) {
+            let parent = $(container).parent();
+            parent.append(`
+                <div class="row d-flex justify-content-around p-0 ${container.slice(1)}">
+                </div>
+            `)
+        }
+        $(container).last().append(`
             <div class="content-block" data-id="${image.id}" style="cursor: pointer;">
                 <img src="${image.src}">
             </div>
