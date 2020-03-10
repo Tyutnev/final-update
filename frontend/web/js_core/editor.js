@@ -223,6 +223,8 @@ const addTextNode = (event) => {
             margin-left: ${width};
             margin-top: ${height};
             z-index: 10;
+            font-size: 25px;
+            color: #000;
         "
 
          contenteditable="true" 
@@ -230,9 +232,7 @@ const addTextNode = (event) => {
          data-set="true" 
          data-type="text">
          
-         <span style="font-size: 25px; color: #000" data-set="true" contenteditable="true" data-type="text">
-            ${defaultText}
-         </span>
+         ${defaultText}
          
     </div>
     `);
