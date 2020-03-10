@@ -140,3 +140,25 @@ div[data-set="true"] {
                               not supported by any browser */
     touch-action: none;
 }
+
+.contextmenu {
+    display: none;
+    position: absolute;
+    width: 200px;
+    text-align: center;
+    z-index: 100;
+    background: #fff;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.75);
+}
+
+.contextmenu li {
+    cursor: pointer;
+    border-bottom: 1px solid #000;
+}
+
+.contextmenu li:hover {
+    background: rgb(223, 216, 216);
+}

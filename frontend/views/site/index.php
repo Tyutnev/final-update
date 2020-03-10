@@ -362,3 +362,9 @@ $this->title = 'Страница редактирования';
                 <!-- end main content -->
     </main>
 </div>
+
+<ul class="contextmenu" style="border: 1px solid #000">
+    <li>Добавить узел</li>
+    <li>Удалить</li>
+    <li>Сообщить о баге</li>
+</ul>

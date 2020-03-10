@@ -55,6 +55,17 @@
                     $(event.target).addClass('draggable');
                 });
 
+                $('.main-svg').contextmenu((event) => {
+                    $('.contextmenu').css('display', 'inline-block');
+                    $('.contextmenu').css('left', event.pageX);
+                    $('.contextmenu').css('top', event.pageY);
+                    return false;
+                });
+
+                $(window).click((event) => {
+                    $('.contextmenu').hide();
+                })
+
                 $('aside').removeClass('sidebar--is-visible');
             }
         })
