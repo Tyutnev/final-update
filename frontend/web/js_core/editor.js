@@ -315,4 +315,7 @@ $('.main-svg').click((event) => {
     $('.tools-panel-text').hide();
     $('.tool-item').hide();
     $('.tools-panel-default').show();
+    $('.font-section').hide();
+    $('.category-section').show();
+    $('.fonts-list').empty();
 })
