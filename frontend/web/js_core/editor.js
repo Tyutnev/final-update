@@ -314,6 +314,10 @@ $('.pcr-swatches').click((event) => {
         $(CURRENT_EDIT_ELEMENT).find('[data-edit-item="true"]').attr('stroke', color);
         return;
     }
+    if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'background-color') {
+        $(CURRENT_EDIT_ELEMENT).css('background', $('.pcr-result').val());
+        return;
+    }
     $(CURRENT_EDIT_ELEMENT).css('color', color);
 });
 
