@@ -143,11 +143,11 @@ $this->title = 'Страница редактирования';
                             </svg></button>
 
 
-                        <button class="button-no-active shadow_none save btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <button class="button-no-active shadow_none save btn btn--primary button-studio save-button save-button-menu" type="button"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.2929 7.2929L11 10.5858V0H9V10.5858L5.7071 7.2929L4.2929 8.7071L10 14.4142L15.7071 8.7071L14.2929 7.2929ZM20 18V14H18V18H2V14H0V18C0 19.1046 0.89543 20 2 20H18C19.1046 20 20 19.1046 20 18Z" fill="#393939" />
                             </svg>
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
+                        <div class="dropdown-menu dropdown-menu-save" aria-labelledby="dropdownMenuMenuFormat">
                             <button class="dropdown-item format-save-item" value="png" type="button">PNG</button>
                             <button class="dropdown-item format-save-item" value="jpeg" type="button">JPEG</button>
                             <button class="dropdown-item format-save-item" value="pdf" type="button">PDF</button>

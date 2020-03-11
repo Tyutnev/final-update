@@ -162,3 +162,8 @@ div[data-set="true"] {
 .contextmenu li:hover {
     background: rgb(223, 216, 216);
 }
+
+.show-block {
+    display: block;
+    left: 80%;
+}

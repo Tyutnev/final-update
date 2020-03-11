@@ -338,3 +338,7 @@ $('.main-svg').click((event) => {
     $('.category-section').show();
     $('.fonts-list').empty();
 })
+
+$('.save-button-menu').click((event) => {
+    $('.dropdown-menu-save').toggleClass('show-block');
+});
