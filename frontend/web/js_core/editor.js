@@ -44,6 +44,11 @@ const updateTools = (event) => {
         $('.pcr-button').css('color', currentEditable.css('color'));
     }
 
+    if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'background-color') {
+        $('.pcr-button').css('color', currentEditable.css('background'));
+        return;
+    }
+
     let fontSize = currentEditable.css('font-size').replace('px', '');
     $('.quantity').attr('value', fontSize);
 };
@@ -156,6 +161,10 @@ const editColor = (event) => {
         $(CURRENT_EDIT_ELEMENT).find('[data-edit-item="true"]').attr('fill', $('.pcr-result').val());
         return;
     }
+    if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'background-color') {
+        $(CURRENT_EDIT_ELEMENT).css('background', $('.pcr-result').val());
+        return;
+    }
     $(CURRENT_EDIT_ELEMENT).css('color', $('.pcr-result').val());
 };
 
@@ -200,6 +209,10 @@ const getToolsPanel = (event) => {
         console.log('In img');
         $('.file-tool').show();
         $('.delete-tool').show();
+        return;
+    }
+    if (type == 'background-color') {
+        $('.color-tool').show();
         return;
     }
 
