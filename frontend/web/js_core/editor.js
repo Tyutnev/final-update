@@ -66,6 +66,8 @@ const editableHandler = (event) => {
 
     console.log(target.prop('tagName'));
 
+    event.stopPropagation();
+
     //Убираем атрибут редактирования с прошлого редактируемого элемента
     $(CURRENT_EDIT_ELEMENT).attr(CURRENT_EDIT, 'false');
     //Указываем, что данный элемент редактируется
