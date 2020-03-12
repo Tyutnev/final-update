@@ -28,160 +28,112 @@ AppAsset::register($this);
 <?php $this->endBody() ?>
 
 </html>
+
+<style>
+.draggable{
+    display: inline-block; 
+    cursor: move;
+    position: absolute;         
+}
+
+.guide{
+    display: none; 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+}
+
+#guide-h{
+    border-top: 1px dashed #55f; 
+    width: 100%; 
+}
+
+#guide-v{
+    border-left: 1px dashed #55f; 
+    height: 100%; 
+}
+</style>
+
 <script>
-    // target elements with the "draggable" class
-    interact('.draggable')
-        .draggable({
-            // enable inertial throwing
-            inertia: true,
-            // keep the element within the area of it's parent
-            restrict: {
-                endOnly: true,
-                elementRect: {
-                    top: 0,
-                    left: 0,
-                    bottom: 1,
-                    right: 1
-                }
-            },
-            // enable autoScroll
-            autoScroll: true,
+var MIN_DISTANCE = 10; // minimum distance to "snap" to a guide
+var guides = []; // no guides available ... 
+var innerOffsetX, innerOffsetY; // we'll use those during drag ... 
 
-            onstart: function(event) {
-                console.log('onstart');
-            },
-
-            // call this function on every dragmove event
-            onmove: dragMoveListener,
-            // call this function on every dragend event
-            onend: function(event) {
-                console.log('onend');
-                var textEl = event.target.querySelector('p');
-
-                textEl && (textEl.textContent =
-                    'moved a distance of ' +
-                    (Math.sqrt(event.dx * event.dx +
-                        event.dy * event.dy) | 0) + 'px');
-            }
-        });
-
-    function dragMoveListener(event) {
-        console.log('dragMoveListener');
-            var target = event.target,
-                // keep the dragged position in the data-x/data-y attributes
-                x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-                y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-            // translate the element
-            target.style.webkitTransform =
-                target.style.transform =
-                'translate(' + x * (1 / ($('.scale').val() / 100)) + 'px, ' + y * (1 / ($('.scale').val() / 100)) + 'px)';
-
-            // update the position attributes
-            target.setAttribute('data-x', x);
-            target.setAttribute('data-y', y);
-    }
-
-    interact('.resize-drag')
-        .resizable({
-            // resize from all edges and corners
-            edges: {
-                left: true,
-                right: true,
-                bottom: true,
-                top: true
-            },
-
-            listeners: {
-                move(event) {
-                    var target = event.target
-                    var x = (parseFloat(target.getAttribute('data-x')) || 0)
-                    var y = (parseFloat(target.getAttribute('data-y')) || 0)
-
-                    // update the element's style
-                    target.style.width = event.rect.width + 'px'
-                    target.style.height = event.rect.height + 'px'
-
-                    // translate when resizing from top or left edges
-                    x += event.deltaRect.left
-                    y += event.deltaRect.top
-
-                    target.style.webkitTransform = target.style.transform =
-                        'translate(' + x + 'px,' + y + 'px)'
-
-                    target.setAttribute('data-x', x)
-                    target.setAttribute('data-y', y)
-                }
-            },
-            modifiers: [
-                // minimum size
-                interact.modifiers.restrictSize({
-                    min: {
-                        width: 100,
-                        height: 50
+$( ".draggable" ).draggable({
+    start: function( event, ui ) {
+        console.log('START');
+        guides = $.map( $( ".draggable" ).not( this ), computeGuidesForElement );
+        innerOffsetX = event.originalEvent.offsetX;
+        innerOffsetY = event.originalEvent.offsetY;
+    }, 
+    drag: function( event, ui ){
+        console.log('DRAG');
+        // iterate all guides, remember the closest h and v guides
+        var guideV, guideH, distV = MIN_DISTANCE+1, distH = MIN_DISTANCE+1, offsetV, offsetH; 
+        var chosenGuides = { top: { dist: MIN_DISTANCE+1 }, left: { dist: MIN_DISTANCE+1 } }; 
+        var $t = $(this); 
+        var pos = { top: event.originalEvent.pageY - innerOffsetY, left: event.originalEvent.pageX - innerOffsetX }; 
+        var w = $t.outerWidth() - 1; 
+        var h = $t.outerHeight() - 1; 
+        var elemGuides = computeGuidesForElement( null, pos, w, h ); 
+        $.each( guides, function( i, guide ){
+            $.each( elemGuides, function( i, elemGuide ){
+                if( guide.type == elemGuide.type ){
+                    var prop = guide.type == "h"? "top":"left"; 
+                    var d = Math.abs( elemGuide[prop] - guide[prop] ); 
+                    if( d < chosenGuides[prop].dist ){
+                        chosenGuides[prop].dist = d; 
+                        chosenGuides[prop].offset = elemGuide[prop] - pos[prop]; 
+                        chosenGuides[prop].guide = guide; 
                     }
-                })
-            ],
-
-            inertia: true
-        })
-        .draggable({
-            listeners: {
-                move: window.dragMoveListener
-            },
-            inertia: true,
-            modifiers: [
-                interact.modifiers.restrictRect({
-                    restriction: 'parent',
-                    endOnly: true
-                })
-            ]
-        })
-
-    interact('.resize-drag')
-    .resizable({
-        // resize from all edges and corners
-        edges: { left: true, right: true, bottom: true, top: true },
-
-        listeners: {
-        move (event) {
-            var target = event.target
-            var x = (parseFloat(target.getAttribute('data-x')) || 0)
-            var y = (parseFloat(target.getAttribute('data-y')) || 0)
-
-            // update the element's style
-            target.style.width = event.rect.width + 'px'
-            target.style.height = event.rect.height + 'px'
-
-            // translate when resizing from top or left edges
-            x += event.deltaRect.left
-            y += event.deltaRect.top
-
-            target.style.webkitTransform = target.style.transform =
-            'translate(' + x + 'px,' + y + 'px)'
-
-            target.setAttribute('data-x', x)
-            target.setAttribute('data-y', y)
+                }
+            } ); 
+        } );
+        
+        if( chosenGuides.top.dist <= MIN_DISTANCE ){
+            $( "#guide-h" ).css( "top", chosenGuides.top.guide.top ).show(); 
+            ui.position.top = chosenGuides.top.guide.top - chosenGuides.top.offset;
         }
-        },
-        modifiers: [
-        // minimum size
-        interact.modifiers.restrictSize({
-            min: { width: 100, height: 50 }
-        })
-        ],
+        else{
+            $( "#guide-h" ).hide(); 
+            ui.position.top = pos.top; 
+        }
+        
+        if( chosenGuides.left.dist <= MIN_DISTANCE ){
+            $( "#guide-v" ).css( "left", chosenGuides.left.guide.left ).show(); 
+            ui.position.left = chosenGuides.left.guide.left - chosenGuides.left.offset; 
+        }
+        else{
+            $( "#guide-v" ).hide(); 
+            ui.position.left = pos.left; 
+        }
+    }, 
+    stop: function( event, ui ){
+        console.log('STOP');
+        $( "#guide-v, #guide-h" ).hide(); 
+    }
+});
 
-        inertia: true
-    })
-    .draggable({
-        listeners: { move: window.dragMoveListener },
-        inertia: true,
-        modifiers: [
-        interact.modifiers.restrictRect({
-            endOnly: true
-        })
-        ]
-    })
+
+function computeGuidesForElement( elem, pos, w, h ){
+    if( elem != null ){
+        var $t = $(elem); 
+        pos = $t.offset(); 
+        w = $t.outerWidth() - 1; 
+        h = $t.outerHeight() - 1; 
+    }
+    
+    return [
+        { type: "h", left: pos.left, top: pos.top }, 
+        { type: "h", left: pos.left, top: pos.top + h }, 
+        { type: "v", left: pos.left, top: pos.top }, 
+        { type: "v", left: pos.left + w, top: pos.top },
+        // you can add _any_ other guides here as well (e.g. a guide 10 pixels to the left of an element)
+        { type: "h", left: pos.left, top: pos.top + h/2 },
+        { type: "v", left: pos.left + w/2, top: pos.top } 
+    ]; 
+}
+
 </script>
 </body>
 <?php $this->endPage() ?>
