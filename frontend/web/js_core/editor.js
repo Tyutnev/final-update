@@ -82,7 +82,13 @@ const editableHandler = (event) => {
             throttleResize: 0,
             scalable: true,
             throttleScale: 0,
-            keepRatio: false
+            keepRatio: false,
+            snappable: true,
+            snapThreshold: 5,
+            snapCenter: true,
+            verticalGuidelines: [100, 200, 300],
+            horizontalGuidelines: [0, 100, 200],
+            elementGuidelines: [document.querySelector('[data-set="true"]')],
         }).on("drag", ({ target, left, top, beforeDelta }) => {
             target.style.left = left + "px";
             target.style.top = top + "px";
