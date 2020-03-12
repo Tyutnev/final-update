@@ -89,6 +89,9 @@ const editableHandler = (event) => {
             verticalGuidelines: [100, 200, 300],
             horizontalGuidelines: [0, 100, 200],
             elementGuidelines: [document.querySelector('[data-set="true"]')],
+            rotatable: true,
+            throttleRotate: 0,
+            rotationPosition: "top",
         }).on("drag", ({ target, left, top, beforeDelta }) => {
             target.style.left = left + "px";
             target.style.top = top + "px";
@@ -104,6 +107,7 @@ const editableHandler = (event) => {
 
         const frame = {
             translate: [0, 0],
+            rotate: 0
         };
         draggable.on("resizeStart", ({ target, set, setOrigin, dragStart }) => {
             // Set origin if transform-orgin use %.
@@ -126,6 +130,14 @@ const editableHandler = (event) => {
             target.style.transform = `translate(${drag.beforeTranslate[0]}px, ${drag.beforeTranslate[1]}px)`;
         }).on("resizeEnd", ({ target, isDrag, clientX, clientY }) => {
             console.log("onResizeEnd", target, isDrag);
+        });
+        draggable.on("rotateStart", ({set }) => {
+            set(frame.rotate);
+        }).on("rotate", ({ target, beforeRotate }) => {
+            frame.rotate = beforeRotate;
+            target.style.transform = `rotate(${beforeRotate}deg)`;
+        }).on("rotateEnd", ({ target, isDrag, clientX, clientY }) => {
+            console.log("onRotateEnd", target, isDrag);
         });
     }
 
