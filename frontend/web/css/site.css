@@ -167,3 +167,8 @@ div[data-set="true"] {
     display: block;
     left: 80%;
 }
+
+[contenteditable="true"] {
+    outline: none;
+    border: 0;
+}

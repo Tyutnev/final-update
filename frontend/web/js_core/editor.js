@@ -1,6 +1,7 @@
 /**
  * Скрипт для редактирования изображения
  */
+let draggable;
 
 /**
  * Атрибут редактируемого элемента
@@ -73,10 +74,32 @@ const editableHandler = (event) => {
 
     event.stopPropagation();
 
+    if (!draggable) {
+        draggable = new Moveable(document.body, {
+            draggable: true,
+            throttleDrag: 0,
+            resizable: true,
+            throttleResize: 0,
+            keepRatio: true
+        }).on("drag", ({ target, left, top, beforeDelta }) => {
+            target.style.left = left + "px";
+            target.style.top = top + "px";
+        }).on("resize", ({
+            target,
+            width,
+            height,
+            dist
+        }) => {
+            target.style.width = width + "px";
+            target.style.height = height + "px";
+        });
+    }
+
     //Убираем атрибут редактирования с прошлого редактируемого элемента
     $(CURRENT_EDIT_ELEMENT).attr(CURRENT_EDIT, 'false');
     //Указываем, что данный элемент редактируется
     target.attr(CURRENT_EDIT, 'true');
+    draggable.target = $(CURRENT_EDIT_ELEMENT).get(0);
 
     updateTools();
     console.log('Update editable element');

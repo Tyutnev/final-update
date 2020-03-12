@@ -49,7 +49,8 @@ class AppAsset extends AssetBundle
         'js_core/save.js',
         '//cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js', //Library for interact
         'node_modules/svg2pdf.js/dist/svg2pdf.js',
-        'js_core/FileSaver.js'
+        'js_core/FileSaver.js',
+        'https://daybrush.com/moveable/release/latest/dist/moveable.min.js'
     ];
     
     public $depends = [

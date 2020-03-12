@@ -27,58 +27,5 @@ AppAsset::register($this);
 </body>
 <?php $this->endBody() ?>
 
-<script>
-    interact('.draggable')
-        .draggable({
-            // enable inertial throwing
-            inertia: true,
-            // keep the element within the area of it's parent
-            restrict: {
-                endOnly: true,
-                elementRect: {
-                    top: 0,
-                    left: 0,
-                    bottom: 1,
-                    right: 1
-                }
-            },
-            // enable autoScroll
-            autoScroll: true,
-
-            onstart: function(event) {
-                console.log('onstart');
-            },
-
-            // call this function on every dragmove event
-            onmove: dragMoveListener,
-            // call this function on every dragend event
-            onend: function(event) {
-                console.log('onend');
-                var textEl = event.target.querySelector('p');
-
-                textEl && (textEl.textContent =
-                    'moved a distance of ' +
-                    (Math.sqrt(event.dx * event.dx +
-                        event.dy * event.dy) | 0) + 'px');
-            }
-        });
-
-    function dragMoveListener(event) {
-        console.log('dragMoveListener');
-        var target = event.target,
-            // keep the dragged position in the data-x/data-y attributes
-            x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-            y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-        // translate the element
-        target.style.webkitTransform =
-            target.style.transform =
-            'translate(' + x * (1 / ($('.scale').val() / 100)) + 'px, ' + y * (1 / ($('.scale').val() / 100)) + 'px)';
-
-        // update the position attributes
-        target.setAttribute('data-x', x);
-        target.setAttribute('data-y', y);
-    }
-</script>
 </body>
 <?php $this->endPage() ?>
