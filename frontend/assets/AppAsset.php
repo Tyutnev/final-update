@@ -49,9 +49,7 @@ class AppAsset extends AssetBundle
         'js_core/save.js',
         '//cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js', //Library for interact
         'node_modules/svg2pdf.js/dist/svg2pdf.js',
-        'js_core/FileSaver.js',
-        'https://code.jquery.com/jquery-1.12.4.min.js',
-        'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
+        'js_core/FileSaver.js'
     ];
     
     public $depends = [
