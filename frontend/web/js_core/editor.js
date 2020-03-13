@@ -88,7 +88,7 @@ const editableHandler = (event) => {
             snapCenter: true,
             verticalGuidelines: [100, 200, 300],
             horizontalGuidelines: [0, 100, 200],
-            elementGuidelines: [document.querySelector('[data-set="true"]')],
+            elementGuidelines: [document.querySelector('.main-svg')],
             rotatable: true,
             throttleRotate: 0,
             rotationPosition: "top",
@@ -150,7 +150,6 @@ const editableHandler = (event) => {
 
     updateTools();
     $(CURRENT_EDIT_ELEMENT).keyup((event) => {
-        console.log('Here');
         draggable.updateRect();
     });
     console.log('Update editable element');
