@@ -88,7 +88,7 @@ const editableHandler = (event) => {
             snapCenter: true,
             verticalGuidelines: [100, 200, 300],
             horizontalGuidelines: [0, 100, 200],
-            elementGuidelines: [document.querySelector('.main-svg')],
+            elementGuidelines: document.querySelectorAll('[data-set="true"]'),
             rotatable: true,
             throttleRotate: 0,
             rotationPosition: "top",
