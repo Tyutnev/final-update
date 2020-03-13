@@ -416,6 +416,8 @@ $('.main-svg').click((event) => {
     $('.font-section').hide();
     $('.category-section').show();
     $('.fonts-list').empty();
+
+    draggable.target = '';
 })
 
 $('.save-button-menu').click((event) => {
