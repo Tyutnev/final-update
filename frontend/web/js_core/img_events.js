@@ -28,6 +28,7 @@
                 html = JSON.parse(html);
                 $('.main-svg').empty();
                 $('.main-svg').append(html);
+                if (draggable) draggable.target = ""
 
                 let imgWidth = parseInt($('.main-svg').css('width'));
                 let canvasWidth = parseInt($('.container .h-100').css('width'));
