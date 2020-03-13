@@ -144,8 +144,6 @@ div[data-set="true"] {
 .contextmenu {
     display: none;
     position: absolute;
-    width: 200px;
-    text-align: center;
     z-index: 100;
     background: #fff;
     cursor: pointer;

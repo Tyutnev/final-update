@@ -1,15 +1,21 @@
 @font-face {
-    font-family: "Montserrat SemiBold";
+    font-family: "SFPro Medium";
     font-weight: 400;
     font-style: normal;
-    src: url(../fonts/Montserrat/Montserrat-SemiBold.eot);
-    src: url(../fonts/Montserrat/Montserrat-SemiBold.eot?#iefix) format("embedded-opentype"), url(../fonts/Montserrat/Montserrat-SemiBold.woff) format("woff"), url(../fonts/Montserrat/Montserrat-SemiBold.ttf) format("truetype")
+    src: url(../fonts/SFPro/SFProDisplay-Medium.eot);
+    src: url(../fonts/SFPro/SFProDisplay-Medium.eot?#iefix) format("embedded-opentype"), url(../fonts/SFPro/SFProDisplay-Medium.woff) format("woff"), url(../fonts/SFPro/SFProDisplay-Medium.ttf) format("truetype")
 }
 
+.accordion__header{
+    
+   color: #393939!important;
+    font-size: 16px!important;
+    font-family: "SFPro Medium"!important;  
+}
 .label_color {
     color: #393939!important;
-    font-size: 14px!important;
-    font-family: "Montserrat SemiBold"!important;
+    font-size: 16px!important;
+    font-family: "SFPro Medium"!important;
 }
 
 .butn_no_active {
@@ -28,6 +34,9 @@
     overflow-x: scroll!important;
     overflow-y: scroll!important;
 }
+
+.over::-webkit-scrollbar {width:0px;}
+.c::-webkit-scrollbar {width:0px;}
 
 .btn_main {
     background: #FF464E!important;
@@ -84,6 +93,14 @@
     background-position: center center;
 }
 
+.button-no-active-plus {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px!important;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 
 button, 
 button:active, 
@@ -100,4 +117,16 @@ button:focus {
 
 .card[class*="border"] {
     border: none;
+}
+
+.index-0 {
+    z-index: -5!important;
+}
+
+.index-1 {
+    z-index: 5!important;
+}
+
+.index-2 {
+    z-index: 10!important;
 }

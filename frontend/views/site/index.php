@@ -95,8 +95,8 @@ $this->title = 'Страница редактирования';
         <!-- start main content -->
         <div class="position-absolute fixed-top">
 
-            <div class="border-bottom card w-100">
-                <div class="d-flex p-2 card-body justify-content-between ">
+            <div class="border-bottom index-2 card w-100">
+                <div class="d-flex p-2 card-body index-2 justify-content-between ">
 
                     <div class="text-center flex-column">
 
@@ -130,12 +130,12 @@ $this->title = 'Страница редактирования';
 
                     <div class="text-center flex-column">
  
-                        <button class="button-no-active shadow_none add btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <!--      <button class="button-no-active shadow_none add btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             +
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
                             <button class="dropdown-item add-item" value="text" type="button">Текст</button>
-                        </div>
+                        </div>-->
                                 
 
                         <button class="button-no-active shadow_none btn btn--primary button-studio"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -164,9 +164,9 @@ $this->title = 'Страница редактирования';
                 </div>
             </div>
             <div class="w-100">
-                <div class="d-flex card-body justify-content-center ">
+                <div class="d-flex index-0 card-body justify-content-center ">
 
-                    <div class="plus_btn def-number-input number-input safari_only">
+                    <div class="index-2 plus_btn def-number-input number-input safari_only">
                         <button class="minus plus_btn size-tool size-tool-button"></button>
                         <input class="scale" min="0" name="scale" value="100" type="number">
                         <button class="plus plus_btn size-tool size-tool-button"></button>
@@ -180,7 +180,7 @@ $this->title = 'Страница редактирования';
         <div class="container h-100">
 
             <div class="row over justify-content-center h-100">
-                <div class="align-self-center main-svg">
+                <div class="index-1 align-self-center main-svg">
                 <div class="draggable" id='example'>
 
 </div>
@@ -202,7 +202,27 @@ $this->title = 'Страница редактирования';
             </div> -->
                 <div class="position-absolute fixed-bottom">
 
+                       <div class="index-0 w-100">
+                <div class="d-flex card-body justify-content-end ">
+                    
+                    
+                      <button class="button-no-active-plus shadow_none add btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="30" cy="30" r="30" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M31 29H40V31H31V40H29V31H20V29H29V20H31V29Z" fill="#393939"/>
+</svg>
 
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
+                            <button class="dropdown-item label_color_16 add-item" value="text" type="button">Текст</button>
+                            <button class="dropdown-item label_color_16 add-item" value="img" type="button">Изображение</button>
+                        </div>
+                    
+                    
+
+                </div>
+
+            </div>
 
                     <!--    <div class="m-5 def-number-input number-input safari_only">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
@@ -365,8 +385,9 @@ $this->title = 'Страница редактирования';
     </main>
 </div>
 
-<ul class="contextmenu" style="border: 1px solid #000">
-    <li>Добавить узел</li>
-    <li>Удалить</li>
-    <li>Сообщить о баге</li>
-</ul>
+<div class="list-group contextmenu">
+   <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+  <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+  <button type="button" class="list-group-item list-group-item-action" disabled>Vestibulum at eros</button>
+        </div>
