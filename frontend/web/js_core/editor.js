@@ -136,6 +136,7 @@ const editableHandler = (event) => {
         }).on("rotate", ({ target, beforeRotate }) => {
             frame.rotate = beforeRotate;
             target.style.transform = `rotate(${beforeRotate}deg)`;
+            $('.rotate-input').val(Math.round(beforeRotate));
         }).on("rotateEnd", ({ target, isDrag, clientX, clientY }) => {
             console.log("onRotateEnd", target, isDrag);
         });
@@ -148,6 +149,10 @@ const editableHandler = (event) => {
     draggable.target = $(CURRENT_EDIT_ELEMENT).get(0);
 
     updateTools();
+    $(CURRENT_EDIT_ELEMENT).keyup((event) => {
+        console.log('Here');
+        draggable.updateRect();
+    });
     console.log('Update editable element');
 };
 
@@ -266,22 +271,26 @@ const getToolsPanel = (event) => {
         $('.size-tool').show();
         $('.style-tool').show();
         $('.delete-tool').show();
+        $('.rotate-input').show();
         return;
     }
     if (type == 'element') {
         console.log('In element');
         $('.color-tool').show();
         $('.delete-tool').show();
+        $('.rotate-input').show();
         return;
     }
     if (type == 'img') {
         console.log('In img');
         $('.file-tool').show();
         $('.delete-tool').show();
+        $('.rotate-input').show();
         return;
     }
     if (type == 'background-color') {
         $('.color-tool').show();
+        $('.rotate-input').show();
         return;
     }
 
@@ -372,6 +381,7 @@ $('.size-tool-button').click((event) => {
 
     $('.scale').val(currentScale);
     $('.main-svg').css('transform', `scale(${currentScale / 100})`);
+    draggable.updateRect();
 });
 
 $('.pcr-swatches').click((event) => {
@@ -411,3 +421,9 @@ $('.main-svg').click((event) => {
 $('.save-button-menu').click((event) => {
     $('.dropdown-menu-save').toggleClass('show-block');
 });
+
+$('.rotate-input').keyup((event) => {
+    let rotate = $('.rotate-input').val();
+    $(CURRENT_EDIT_ELEMENT).css('transform', `rotate(${rotate}deg)`);
+    draggable.updateRect();
+})
