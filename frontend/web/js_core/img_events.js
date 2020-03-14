@@ -48,6 +48,8 @@
                 $('[data-set="true"]').click(editableHandler);
                 $('[data-set="true"]').click(getToolsPanel);
 
+                $('[data-type="text"]').css('line-height', 'normal');
+
                 $('[data-type="text"]').dblclick((event) => {
                     $(event.target).removeClass('draggable');
                 });
