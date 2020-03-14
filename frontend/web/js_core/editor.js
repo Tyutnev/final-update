@@ -74,6 +74,8 @@ const editableHandler = (event) => {
 
     event.stopPropagation();
 
+    let oldWidth;
+
     if (!draggable) {
         draggable = new Moveable(document.body, {
             draggable: true,
@@ -118,12 +120,13 @@ const editableHandler = (event) => {
             const cssWidth = parseFloat(style.width);
             const cssHeight = parseFloat(style.height);
             set([cssWidth, cssHeight]);
-
             // If a drag event has already occurred, there is no dragStart.
             dragStart && dragStart.set(frame.translate);
         }).on("resize", ({ target, width, height, drag }) => {
             target.style.width = `${width}px`;
             target.style.height = `${height}px`;
+
+            $(CURRENT_EDIT_ELEMENT).fitText(1.2);
 
             // get drag event
             frame.translate = drag.beforeTranslate;
@@ -149,6 +152,7 @@ const editableHandler = (event) => {
     draggable.target = $(CURRENT_EDIT_ELEMENT).get(0);
 
     updateTools();
+
     $(CURRENT_EDIT_ELEMENT).keyup((event) => {
         draggable.updateRect();
     });

@@ -50,7 +50,8 @@ class AppAsset extends AssetBundle
         '//cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js', //Library for interact
         'node_modules/svg2pdf.js/dist/svg2pdf.js',
         'js_core/FileSaver.js',
-        'https://daybrush.com/moveable/release/latest/dist/moveable.min.js'
+        'https://daybrush.com/moveable/release/latest/dist/moveable.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js'
     ];
     
     public $depends = [
