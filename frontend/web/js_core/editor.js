@@ -153,6 +153,12 @@ const editableHandler = (event) => {
 
     updateTools();
 
+    draggable.keepRatio = false;
+
+    if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'img') {
+        draggable.keepRatio = true;
+    }
+
     $(CURRENT_EDIT_ELEMENT).keyup((event) => {
         draggable.updateRect();
     });
