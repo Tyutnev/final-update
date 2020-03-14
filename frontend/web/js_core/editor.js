@@ -126,7 +126,7 @@ const editableHandler = (event) => {
             target.style.width = `${width}px`;
             target.style.height = `${height}px`;
 
-            $(CURRENT_EDIT_ELEMENT).fitText(1.2);
+            $(CURRENT_EDIT_ELEMENT).fitText(3);
 
             // get drag event
             frame.translate = drag.beforeTranslate;
