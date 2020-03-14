@@ -51,11 +51,13 @@
                 $('[data-type="text"]').css('line-height', 'normal');
 
                 $('[data-type="text"]').dblclick((event) => {
-                    $(event.target).removeClass('draggable');
+                    draggable.draggable = false;
+                    draggable.snappable = false;
                 });
 
                 $('[data-type="text"]').blur((event) => {
-                    $(event.target).addClass('draggable');
+                    draggable.draggable = true;
+                    draggable.snappable = true;
                 });
 
                 $('.main-svg').contextmenu((event) => {
