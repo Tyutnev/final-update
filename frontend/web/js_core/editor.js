@@ -15,6 +15,14 @@ const CURRENT_EDIT_ELEMENT = `[${CURRENT_EDIT}="true"]`;
 
 const EMPTY = '';
 
+const updatePalette = (hex) => {
+    $('.pcr-result').val(hex);
+};
+
+const updateCurrentFont = () => {
+    $('.current-font').html($(CURRENT_EDIT_ELEMENT).css('font-family').split(',')[0])
+};
+
 /**
  * Обновление панели инструментов
  * @param {object} event 
@@ -38,15 +46,19 @@ const updateTools = (event) => {
     if (currentEditable.prop('tagName') == 'svg') {
         if (currentEditable.find('[data-edit-item="true"]').attr('stroke')) {
             $('.pcr-button').css('color', currentEditable.find('[data-edit-item="true"]').attr('stroke'));
+            updatePalette(currentEditable.find('[data-edit-item="true"]').attr('stroke'));
         } else {
             $('.pcr-button').css('color', currentEditable.find('[data-edit-item="true"]').attr('fill'));
+            updatePalette(currentEditable.find('[data-edit-item="true"]').attr('fill'));
         }
     } else {
         $('.pcr-button').css('color', currentEditable.css('color'));
+        updatePalette(currentEditable.css('color'));
     }
 
     if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'background-color') {
         $('.pcr-button').css('color', currentEditable.css('background'));
+        updatePalette(currentEditable.css('color'));
         return;
     }
 
@@ -126,7 +138,7 @@ const editableHandler = (event) => {
             target.style.width = `${width}px`;
             target.style.height = `${height}px`;
 
-            $(CURRENT_EDIT_ELEMENT).fitText();
+            //$(CURRENT_EDIT_ELEMENT).fitText();
 
             // get drag event
             frame.translate = drag.beforeTranslate;
@@ -157,6 +169,10 @@ const editableHandler = (event) => {
 
     if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'img') {
         draggable.keepRatio = true;
+    }
+
+    if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'text') {
+        updateCurrentFont();
     }
 
     $(CURRENT_EDIT_ELEMENT).keyup((event) => {
@@ -439,3 +455,8 @@ $('.rotate-input').keyup((event) => {
     $(CURRENT_EDIT_ELEMENT).css('transform', `rotate(${rotate}deg)`);
     draggable.updateRect();
 })
+
+$(window).click((event) => {
+    if ($(event.target).hasClass('window-menu')) return;
+    $('.dropdown-menu-save').removeClass('show-block');
+});

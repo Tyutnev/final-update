@@ -66,6 +66,11 @@ class Img extends ActiveRecord
         return self::find()->where(['id' => $id])->one();
     }
 
+    public static function getAllByIds($ids)
+    {
+        return self::find()->where(['id' => $ids])->asArray()->all();
+    }
+
     public function upload()
     {
         if ($this->validate()) {

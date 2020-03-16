@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use yii\db\ActiveRecord;
+use frontend\models\HtmlList;
 
 class Html extends ActiveRecord
 {
@@ -26,5 +27,10 @@ class Html extends ActiveRecord
     public static function getLast()
     {
         return self::find()->orderBy(['id' => SORT_DESC])->one();
+    }
+
+    public function getList()
+    {
+        HtmlList::getIds($this->id);
     }
 };

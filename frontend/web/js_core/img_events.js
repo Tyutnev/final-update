@@ -77,6 +77,12 @@
     });
 
     $('.fonts').click((event) => {
+        if ($('.font-section:visible').get(0)) {
+            $('.font-section').hide();
+            $('.category-section').show();
+            return;
+        }
+
         $('.category-section').hide();
         $('.font-section').show();
 
@@ -111,6 +117,7 @@
                     `);
 
                     $(CURRENT_EDIT_ELEMENT).css('font-family', title);
+                    updateCurrentFont();
                 });
             }
         })
