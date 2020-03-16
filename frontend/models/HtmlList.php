@@ -16,6 +16,9 @@ class HtmlList extends ActiveRecord
      */
     public static function getIds($id_root)
     {
-        return self::find()->where(['id_root' => $id_root])->asArray()->all();
+        return self::find()->where(['id_root' => $id_root])->
+                             orderBy(['node_order' => SORT_ASC])->
+                             asArray()->
+                             all();
     }
 }

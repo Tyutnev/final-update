@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use frontend\models\HtmlList;
 
 class Img extends ActiveRecord
 {
@@ -39,7 +40,7 @@ class Img extends ActiveRecord
      */
     public static function findImgByCategory($id_category, $pivot = null)
     {
-        $sqlState = self::find()->where(['id_category' => $id_category]);
+        $sqlState = self::find()->where(['id_category' => $id_category])->andWhere(['!=', 'is_node_in_list', 1]);
         if($pivot) $sqlState->andWhere(['<', 'id', $pivot]);
 
         return $sqlState->orderBy(['id' => SORT_DESC])->limit(self::LIMIT)->asArray()->all();
@@ -69,6 +70,11 @@ class Img extends ActiveRecord
     public static function getAllByIds($ids)
     {
         return self::find()->where(['id' => $ids])->asArray()->all();
+    }
+
+    public static function templateHasList($id)
+    {
+        return !!HtmlList::getIds($id);
     }
 
     public function upload()

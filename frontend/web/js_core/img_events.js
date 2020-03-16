@@ -9,6 +9,53 @@
      */
     const CURRENT_EDIT_ELEMENT = `[${CURRENT_EDIT}="true"]`;
 
+    const renderHtml = (html) => {
+        html = JSON.parse(html);
+        $('.main-svg').empty();
+        $('.main-svg').append(html);
+        if (draggable) draggable.target = ""
+
+        let imgWidth = parseInt($('.main-svg').css('width'));
+        let canvasWidth = parseInt($('.container .h-100').css('width'));
+
+        console.log("Img width: " + imgWidth);
+        console.log("Canvas width: " + canvasWidth);
+
+        if (imgWidth > canvasWidth) {
+            let scale = Math.round(canvasWidth * 90 / imgWidth);
+            $('.scale').val(scale);
+            $('.main-svg').css('transform', `scale(${scale / 100})`);
+        } else {
+            $('.scale').val(70);
+            $('.main-svg').css('transform', `scale(0.7)`);
+        }
+
+        $('[data-set="true"]').click(editableHandler);
+        $('[data-set="true"]').click(getToolsPanel);
+
+        $('[data-type="text"]').css('line-height', 'normal');
+
+        $('[data-type="text"]').dblclick((event) => {
+            draggable.draggable = false;
+            draggable.snappable = false;
+        });
+
+        $('[data-type="text"]').blur((event) => {
+            draggable.draggable = true;
+            draggable.snappable = true;
+        });
+
+        $('.main-svg').contextmenu((event) => {
+            $('.contextmenu').css('display', 'inline-block');
+            $('.contextmenu').css('left', event.pageX);
+            $('.contextmenu').css('top', event.pageY);
+            return false;
+        });
+
+        $(window).click((event) => {
+            $('.contextmenu').hide();
+        })
+    }
 
     $('.content-block').click((event) => {
         let element = $(event.target);
@@ -18,6 +65,49 @@
             element = element.parent();
         }
 
+        if (element.attr('data-list')) {
+            $.ajax({
+                type: 'GET',
+                url: 'img/list',
+                data: {
+                    id: element.attr('data-id')
+                },
+                success: (html) => {
+                    html = JSON.parse(html);
+                    $('.category-section').hide();
+                    $('.html-list-container').empty();
+                    $('.html-list-section').show();
+
+                    $('.html-list-section').append(`
+                        <img src="${element.find('img').attr('src')}" class="node" data-node="${element.attr('data-id')}" style="maring-top: 10px; cursor: pointer;">
+                    `);
+
+                    html.forEach(img => {
+                        $('.html-list-container').append(`
+                            <img src="${img.src}" class="node" data-node="${img.node}" style="maring-top: 10px; cursor: pointer;">
+                        `)
+                    });
+
+                    $('.node').click((event) => {
+                        $.ajax({
+                            type: 'GET',
+                            url: 'img/html',
+                            data: {
+                                id: $(event.target).attr('data-node')
+                            },
+                            success: (html) => {
+                                renderHtml(html);
+
+                                if (!element.attr('data-list')) {
+                                    $('aside').removeClass('sidebar--is-visible');
+                                }
+                            }
+                        })
+                    })
+                }
+            })
+        }
+
         $.ajax({
             type: 'GET',
             url: 'img/html',
@@ -25,53 +115,7 @@
                 id: element.attr('data-id')
             },
             success: (html) => {
-                html = JSON.parse(html);
-                $('.main-svg').empty();
-                $('.main-svg').append(html);
-                if (draggable) draggable.target = ""
-
-                let imgWidth = parseInt($('.main-svg').css('width'));
-                let canvasWidth = parseInt($('.container .h-100').css('width'));
-
-                console.log("Img width: " + imgWidth);
-                console.log("Canvas width: " + canvasWidth);
-
-                if (imgWidth > canvasWidth) {
-                    let scale = Math.round(canvasWidth * 90 / imgWidth);
-                    $('.scale').val(scale);
-                    $('.main-svg').css('transform', `scale(${scale / 100})`);
-                } else {
-                    $('.scale').val(70);
-                    $('.main-svg').css('transform', `scale(0.7)`);
-                }
-
-                $('[data-set="true"]').click(editableHandler);
-                $('[data-set="true"]').click(getToolsPanel);
-
-                $('[data-type="text"]').css('line-height', 'normal');
-
-                $('[data-type="text"]').dblclick((event) => {
-                    draggable.draggable = false;
-                    draggable.snappable = false;
-                });
-
-                $('[data-type="text"]').blur((event) => {
-                    draggable.draggable = true;
-                    draggable.snappable = true;
-                });
-
-                $('.main-svg').contextmenu((event) => {
-                    $('.contextmenu').css('display', 'inline-block');
-                    $('.contextmenu').css('left', event.pageX);
-                    $('.contextmenu').css('top', event.pageY);
-                    return false;
-                });
-
-                $(window).click((event) => {
-                    $('.contextmenu').hide();
-                })
-
-                $('aside').removeClass('sidebar--is-visible');
+                renderHtml(html);
             }
         })
     });
@@ -170,6 +214,8 @@ $('.delete-false').click((event) => {
 
 $('.category-button').click((event) => {
     $('.font-section').hide();
+    $('.html-list-section').hide();
     $('.category-section').show();
     $('.fonts-list').empty();
+    $('.html-list-container').empty();
 });

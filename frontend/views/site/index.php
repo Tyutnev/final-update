@@ -75,6 +75,13 @@ $this->title = 'Страница редактирования';
                         </div>
                     </section>
 
+                    <section class="html-list-section" style="display: none; margin-top: 10px;">
+                        <button class="btn btn-primary category-button">Вернуться к категориям</button>
+                        <div class="html-list-container">
+
+                        </div>
+                    </section>
+
 
 
                 </div>

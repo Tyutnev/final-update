@@ -8,7 +8,7 @@ use frontend\models\Img;
 use frontend\models\Category;
 use frontend\models\Html;
 use common\models\Font;
-use Dompdf\Dompdf;
+use frontend\models\HtmlList;
 
 class ImgController extends Controller
 {
@@ -25,6 +25,16 @@ class ImgController extends Controller
                 (int)Yii::$app->request->post('id_category'),
                 (int)Yii::$app->request->post('pivot')
             );
+
+            foreach($imgs as &$img)
+            {
+                if(Img::templateHasList($img['id']))
+                {
+                    $img['hasList'] = 1;
+                    continue;
+                }
+                $img['hasList'] = 0;
+            }
 
             echo json_encode($imgs);
         }
@@ -51,6 +61,25 @@ class ImgController extends Controller
             $img = Img::getById((int)Yii::$app->request->get('id'));
             $html = Html::getById($img->id_html);
             echo json_encode($html->content);
+            die;
+        }
+    }
+
+    /**
+     * Получение html list
+     */
+    public function actionList()
+    {
+        if(Yii::$app->request->isAjax)
+        {
+            $htmlList = HtmlList::getIds((int)Yii::$app->request->get('id'));
+            
+            foreach($htmlList as &$list) 
+            {
+                $list['src'] = Img::getById($list['node'])->src;
+            }
+
+            echo json_encode($htmlList);
             die;
         }
     }

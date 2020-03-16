@@ -53,7 +53,7 @@
      * @param {string} container
      */
     const renderImage = (image, container) => {
-        console.log($(container).last().children().length);
+
         if ($(container).last().children().length == 3) {
             let parent = $(container).parent();
             parent.append(`
@@ -62,7 +62,7 @@
             `)
         }
         $(container).last().append(`
-            <div class="content-block" data-id="${image.id}" style="cursor: pointer;">
+            <div class="content-block" data-id="${image.id}" style="cursor: pointer;" data-list="${image.hasList}">
                 <img src="${image.src}">
             </div>
         `)
