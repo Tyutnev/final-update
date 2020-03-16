@@ -65,7 +65,7 @@
             element = element.parent();
         }
 
-        if (element.attr('data-list')) {
+        if (element.attr('data-list') == '1') {
             $.ajax({
                 type: 'GET',
                 url: 'img/list',
@@ -78,7 +78,7 @@
                     $('.html-list-container').empty();
                     $('.html-list-section').show();
 
-                    $('.html-list-section').append(`
+                    $('.html-list-container').append(`
                         <img src="${element.find('img').attr('src')}" class="node" data-node="${element.attr('data-id')}" style="maring-top: 10px; cursor: pointer;">
                     `);
 
@@ -97,10 +97,6 @@
                             },
                             success: (html) => {
                                 renderHtml(html);
-
-                                if (!element.attr('data-list')) {
-                                    $('aside').removeClass('sidebar--is-visible');
-                                }
                             }
                         })
                     })
@@ -116,6 +112,9 @@
             },
             success: (html) => {
                 renderHtml(html);
+                if (element.attr('data-list') == '0') {
+                    $('aside').removeClass('sidebar--is-visible');
+                }
             }
         })
     });
