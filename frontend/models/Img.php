@@ -41,7 +41,7 @@ class Img extends ActiveRecord
     public static function findImgByCategory($id_category, $pivot = null)
     {
         $sqlState = self::find()->where(['id_category' => $id_category])->andWhere(['!=', 'is_node_in_list', 1]);
-        if($pivot) $sqlState->andWhere(['<', 'id', $pivot]);
+        if($pivot) $sqlState->andWhere(['<', 'show_order', $pivot]);
 
         return $sqlState->orderBy(['show_order' => SORT_DESC])->limit(self::LIMIT)->asArray()->all();
     }
