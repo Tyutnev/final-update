@@ -375,7 +375,7 @@ const addTextNode = (event) => {
 const addImgNode = () => {
     let width = (parseInt($('.main-svg').css('width')) / 2) + 'px';
     let height = (parseInt($('.main-svg').css('height')) / 2) + 'px';
-    const defaultSrc = 'https://picsum.photos/680/480';
+    const defaultSrc = 'https://picsum.photos/320/240';
 
     $('.main-svg').prepend(`
     <img style="
