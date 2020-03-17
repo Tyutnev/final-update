@@ -69,7 +69,7 @@ class AdminController extends Controller
         {
             $html = Html::getById((int)Yii::$app->request->post('id'));
 
-            $html->content = Yii::$app->request->post('content');
+            $html->content = htmlspecialchars_decode(Yii::$app->request->post('content'));
             echo $html->save() ? json_encode(['status' => 'success']) : json_encode(['status' => 'error']);
             return;
         }

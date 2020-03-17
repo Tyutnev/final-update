@@ -101,7 +101,7 @@
                         })
                     })
                 }
-            })
+            });
         }
 
         $.ajax({
@@ -112,6 +112,7 @@
             },
             success: (html) => {
                 renderHtml(html);
+
                 if (element.attr('data-list') == '0') {
                     $('aside').removeClass('sidebar--is-visible');
                 }
