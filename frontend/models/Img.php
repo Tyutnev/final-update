@@ -16,7 +16,7 @@ class Img extends ActiveRecord
     /**
      * Лимит выборки изображений
      */
-    public const LIMIT = 10;
+    public const LIMIT = 9;
 
     public static function tableName()
     {

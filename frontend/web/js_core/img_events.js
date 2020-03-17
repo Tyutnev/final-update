@@ -58,8 +58,9 @@
     }
 
     $('.content-block').click((event) => {
-        let element = $(event.target);
+        if (!event) return;
 
+        let element = $(event.target);
 
         while (element.prop('tagName') != 'DIV') {
             element = element.parent();
@@ -170,7 +171,7 @@
     $('.format-button').click((event) => {
         $('.font-container').addClass('collapse');
         $('.font-container').removeClass('show');
-    })
+    });
 })();
 
 $('.update-html').click((event) => {

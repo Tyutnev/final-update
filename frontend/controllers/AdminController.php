@@ -48,7 +48,7 @@ class AdminController extends Controller
             if ($path = $img->upload()) {
                 $img->src = $path;
                 $img->id_html = $id_html;
-                $img->order_show = (int)Img::find()->max('order_show') + 1;
+                $img->show_order = (int)Img::find()->max('show_order') + 1;
 
                 $img->load(Yii::$app->request->post());
                 if($img->save())

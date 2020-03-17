@@ -29,7 +29,7 @@
      */
     const renderImageContainer = (category) => {
         $('.category-container').append(`
-        <li class="accordion__item accordion__item--is-open js-accordion__item">
+        <li class="accordion__item accordion__item--is-open js-accordion__item" data-id-category="${category.id}">
         <button class="accordion__header js-tab-focus pl-0 pr-0" type="button">
             <span class="accordion__header-title">${category.title}</span>
             <em aria-hidden="true" class="accordion__header-icon"><i></i></em>
@@ -37,11 +37,12 @@
         <div class="accordion__panel js-accordion__panel">
             <div class="accordion__panel-content p-0">
                 <div class="text-component margin-bottom-md">
-                    <div class="row d-flex justify-content-around p-0 block-${category.title}">
+                    <div class="row d-flex justify-content-around p-0 inner-container block-${category.title}">
                     </div>
                 </div>
             </div>
             </div>
+            <button class="btn btn-succrss show-more">Показать еще</button>
         </li>
         `);
     };
@@ -57,12 +58,12 @@
         if ($(container).last().children().length == 3) {
             let parent = $(container).parent();
             parent.append(`
-                <div class="row d-flex justify-content-around p-0 ${container.slice(1)}">
+                <div class="row d-flex justify-content-around p-0 inner-container ${container.slice(1)}">
                 </div>
             `)
         }
         $(container).last().append(`
-            <div class="content-block" data-id="${image.id}" style="cursor: pointer;" data-list="${image.hasList}">
+            <div class="content-block" data-id="${image.id}" data-show-order=${image.show_order} style="cursor: pointer;" data-list="${image.hasList}">
                 <img src="${image.src}">
             </div>
         `)
@@ -97,6 +98,54 @@
         return imgs;
     };
 
+    const renderHtml = (html) => {
+        html = JSON.parse(html);
+        $('.main-svg').empty();
+        $('.main-svg').append(html);
+        if (draggable) draggable.target = ""
+
+        let imgWidth = parseInt($('.main-svg').css('width'));
+        let canvasWidth = parseInt($('.container .h-100').css('width'));
+
+        console.log("Img width: " + imgWidth);
+        console.log("Canvas width: " + canvasWidth);
+
+        if (imgWidth > canvasWidth) {
+            let scale = Math.round(canvasWidth * 90 / imgWidth);
+            $('.scale').val(scale);
+            $('.main-svg').css('transform', `scale(${scale / 100})`);
+        } else {
+            $('.scale').val(70);
+            $('.main-svg').css('transform', `scale(0.7)`);
+        }
+
+        $('[data-set="true"]').click(editableHandler);
+        $('[data-set="true"]').click(getToolsPanel);
+
+        $('[data-type="text"]').css('line-height', 'normal');
+
+        $('[data-type="text"]').dblclick((event) => {
+            draggable.draggable = false;
+            draggable.snappable = false;
+        });
+
+        $('[data-type="text"]').blur((event) => {
+            draggable.draggable = true;
+            draggable.snappable = true;
+        });
+
+        $('.main-svg').contextmenu((event) => {
+            $('.contextmenu').css('display', 'inline-block');
+            $('.contextmenu').css('left', event.pageX);
+            $('.contextmenu').css('top', event.pageY);
+            return false;
+        });
+
+        $(window).click((event) => {
+            $('.contextmenu').hide();
+        })
+    }
+
     const main = () => {
         let categories = getImgCategory();
 
@@ -107,6 +156,97 @@
             imgs.forEach(img => {
                 renderImage(img, '.block-' + category.title);
             })
+        });
+
+        $('.show-more').click((event) => {
+            let container = $(event.target).parent();
+            let imgs = container.find('.content-block');
+            let id_category = container.attr('data-id-category');
+            let pivot = imgs.get(imgs.length - 1);
+
+            $.ajax({
+                type: 'POST',
+                url: '/img/index',
+                data: {
+                    id_category: id_category,
+                    pivot: $(pivot).attr('data-show-order')
+                },
+                success: (html) => {
+                    html = JSON.parse(html);
+                    let item = $(container.find('.inner-container').get(0));
+                    let classesName = item.attr('class').split(' ');
+                    let category = '.' + classesName[classesName.length - 1];
+
+                    html.forEach(image => {
+                        renderImage(image, category);
+                    });
+
+                    $('.content-block').click((event) => {
+                        if (!event) return;
+
+                        let element = $(event.target);
+
+                        while (element.prop('tagName') != 'DIV') {
+                            element = element.parent();
+                        }
+
+                        if (element.attr('data-list') == '1') {
+                            $.ajax({
+                                type: 'GET',
+                                url: 'img/list',
+                                data: {
+                                    id: element.attr('data-id')
+                                },
+                                success: (html) => {
+                                    html = JSON.parse(html);
+                                    $('.category-section').hide();
+                                    $('.html-list-container').empty();
+                                    $('.html-list-section').show();
+
+                                    $('.html-list-container').append(`
+                                        <img src="${element.find('img').attr('src')}" class="node" data-node="${element.attr('data-id')}" style="maring-top: 10px; cursor: pointer;">
+                                    `);
+
+                                    html.forEach(img => {
+                                        $('.html-list-container').append(`
+                                            <img src="${img.src}" class="node" data-node="${img.node}" style="maring-top: 10px; cursor: pointer;">
+                                        `)
+                                    });
+
+                                    $('.node').click((event) => {
+                                        $.ajax({
+                                            type: 'GET',
+                                            url: 'img/html',
+                                            data: {
+                                                id: $(event.target).attr('data-node')
+                                            },
+                                            success: (html) => {
+                                                renderHtml(html);
+                                            }
+                                        })
+                                    })
+                                }
+                            });
+                        }
+
+                        $.ajax({
+                            type: 'GET',
+                            url: 'img/html',
+                            data: {
+                                id: element.attr('data-id')
+                            },
+                            success: (html) => {
+                                renderHtml(html);
+
+                                if (element.attr('data-list') == '0') {
+                                    $('aside').removeClass('sidebar--is-visible');
+                                }
+                            }
+                        })
+                    });
+                }
+            })
+
         });
     };
 
