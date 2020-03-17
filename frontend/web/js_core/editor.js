@@ -372,6 +372,31 @@ const addTextNode = (event) => {
     $('aside').removeClass('sidebar--is-visible');
 }
 
+const addImgNode = () => {
+    let width = (parseInt($('.main-svg').css('width')) / 2) + 'px';
+    let height = (parseInt($('.main-svg').css('height')) / 2) + 'px';
+    const defaultSrc = 'https://picsum.photos/200/300';
+
+    $('.main-svg').prepend(`
+    <img style="
+            position: absolute;
+            margin-left: ${width};
+            margin-top: ${height};
+            z-index: 10;
+            font-size: 25px;
+            color: #000;
+        "
+         src="${defaultSrc}"
+         class="draggable" 
+         data-set="true" 
+         data-type="img"
+         >
+    `);
+
+    $('[data-set="true"]').click(editableHandler);
+    $('[data-set="true"]').click(getToolsPanel);
+}
+
 /**
  * Загрузка файлов
  */
@@ -429,6 +454,9 @@ $('.pcr-swatches').click((event) => {
 $('.add-item').click((event) => {
     if ($(event.target).attr('value') == 'text') {
         addTextNode();
+    }
+    if ($(event.target).attr('value') == 'img') {
+        addImgNode();
     }
 })
 
