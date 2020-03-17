@@ -43,7 +43,7 @@ class Img extends ActiveRecord
         $sqlState = self::find()->where(['id_category' => $id_category])->andWhere(['!=', 'is_node_in_list', 1]);
         if($pivot) $sqlState->andWhere(['<', 'id', $pivot]);
 
-        return $sqlState->orderBy(['id' => SORT_DESC])->limit(self::LIMIT)->asArray()->all();
+        return $sqlState->orderBy(['show_order' => SORT_DESC])->limit(self::LIMIT)->asArray()->all();
     }
 
     public static function get($pivot = null)
@@ -53,8 +53,26 @@ class Img extends ActiveRecord
         if($pivot) $state->where(['<', 'id', $pivot]);
 
         return $state->limit(self::DEFAULT_LIMIT)->
-                       orderBy(['id' => SORT_DESC])->
+                       orderBy(['show_order' => SORT_DESC])->
                        all();
+    }
+
+    public static function findByShowOrder($show_order)
+    {
+        return self::find()->where(['show_order' => $show_order])->one();
+    }
+
+    public static function swap($showOne, $showTwo)
+    {
+        $imgOne = self::findByShowOrder($showOne);
+        $imgTwo = self::findByShowOrder($showTwo);
+
+        $tmp = $imgOne->show_order;
+        $imgOne->show_order = $imgTwo->show_order;
+        $imgTwo->show_order = $tmp;
+
+        $imgOne->save();
+        $imgTwo->save();
     }
 
     /**

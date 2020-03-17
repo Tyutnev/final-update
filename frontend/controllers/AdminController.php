@@ -48,6 +48,8 @@ class AdminController extends Controller
             if ($path = $img->upload()) {
                 $img->src = $path;
                 $img->id_html = $id_html;
+                $img->order_show = (int)Img::find()->max('order_show') + 1;
+
                 $img->load(Yii::$app->request->post());
                 if($img->save())
                 {
@@ -85,5 +87,16 @@ class AdminController extends Controller
             $img->delete();
             $html->delete();
         } 
+    }
+
+    public function actionSwap()
+    {
+        if(Yii::$app->request->isAjax)
+        {
+            Img::swap(
+                Yii::$app->request->get('show_one'),
+                Yii::$app->request->get('show_two')
+            );
+        }
     }
 }

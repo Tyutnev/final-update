@@ -219,3 +219,50 @@ $('.category-button').click((event) => {
     $('.fonts-list').empty();
     $('.html-list-container').empty();
 });
+
+jQuery.fn.swapWith = function(to) {
+    return this.each(function() {
+        var copy_to = $(to).clone(true);
+        var copy_from = $(this).clone(true);
+        $(to).replaceWith(copy_from);
+        $(this).replaceWith(copy_to);
+    });
+};
+
+$('.to-top').click((event) => {
+    let showOne = $(event.target).parent().parent().parent();
+    let showTwo = $(event.target).parent().parent().parent().prev();
+
+    if (!showTwo.get(0)) return;
+
+    $.ajax({
+        type: 'GET',
+        url: '/admin/swap',
+        data: {
+            'show_one': showOne.attr('data-id'),
+            'show_two': showTwo.attr('data-id')
+        },
+        success: (html) => {
+            showTwo.swapWith(showOne);
+        }
+    });
+});
+
+$('.to-bottom').click((event) => {
+    let showOne = $(event.target).parent().parent().parent();
+    let showTwo = $(event.target).parent().parent().parent().next();
+
+    if (!showTwo.get(0)) return;
+
+    $.ajax({
+        type: 'GET',
+        url: '/admin/swap',
+        data: {
+            'show_one': showOne.attr('data-id'),
+            'show_two': showTwo.attr('data-id')
+        },
+        success: (html) => {
+            showTwo.swapWith(showOne);
+        }
+    });
+});
