@@ -42,16 +42,20 @@ class AppAsset extends AssetBundle
         'js/mdb.js',
         'https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js',
         'https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js',
+        'https://rawgithub.com/ajaxorg/ace-builds/master/src/ext-language_tools.js',
+        'https://rawgithub.com/ajaxorg/ace-builds/master/src/ace.js',
         'js/script.js',
         'js_core/editor.js',
         'js_core/img.js',
+        'js_core/admin.js',
         'js_core/img_events.js',
         'js_core/save.js',
         '//cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js', //Library for interact
         'node_modules/svg2pdf.js/dist/svg2pdf.js',
         'js_core/FileSaver.js',
         'https://daybrush.com/moveable/release/latest/dist/moveable.min.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js'
+        'https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js',
+    
     ];
     
     public $depends = [

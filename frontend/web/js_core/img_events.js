@@ -179,7 +179,7 @@ $('.update-html').click((event) => {
         url: '/admin/update',
         data: {
             id: $('.html-id').html(),
-            content: $('.html-content').html()
+            content: editor.getValue()
         },
         success: (html) => {
             html = JSON.parse(html);
