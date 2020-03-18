@@ -35,6 +35,20 @@ const divToBr = () => {
     $(CURRENT_EDIT_ELEMENT).html(content);
 }
 
+const textRect = () => {
+    $('[data-direction="w"]').hide();
+    $('[data-direction="e"]').hide();
+    $('[data-direction="s"]').hide();
+    $('[data-direction="n"]').hide();
+}
+
+const defaultRect = () => {
+    $('[data-direction="w"]').show();
+    $('[data-direction="e"]').show();
+    $('[data-direction="s"]').show();
+    $('[data-direction="n"]').show();
+}
+
 /**
  * Обновление панели инструментов
  * @param {object} event 
@@ -187,6 +201,9 @@ const editableHandler = (event) => {
 
     if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'text') {
         updateCurrentFont();
+        textRect();
+    } else {
+        defaultRect();
     }
 
     $(CURRENT_EDIT_ELEMENT).keyup((event) => {
