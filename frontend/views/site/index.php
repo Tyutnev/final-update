@@ -54,17 +54,21 @@ $this->title = 'Страница редактирования';
 
                             <ul class="accordion  js-accordion category-container mb-0" data-animation="on" data-multi-items="off">
 
-
                             </ul>
                         </div>
+                        <!-- Show more button -->
+                        <div>
+                            <button class="btn btn-succrss show-more">Показать еще</button>
+                        </div>
+                        <!-- End show more button -->
                     </section>
 
                     <section class="font-section" style="display: none;">
                         <div class="container m-0 p-0 max-width-sm">
-                        <button class="btn btn-primary category-button">Вернуться к категориям</button>
-                        <div>Текущий шрифт: <span class="current-font">Current</span></div>
+                            <button class="btn btn-primary category-button">Вернуться к категориям</button>
+                            <div>Текущий шрифт: <span class="current-font">Current</span></div>
                             <ul class="fonts-list">
-                                
+
                             </ul>
                             <style>
                                 .fonts-list {
@@ -124,7 +128,7 @@ $this->title = 'Страница редактирования';
                         <button class="button-no-active shadow_none btn btn--primary button-studio"><svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M16.5858 6.00007L12.2929 1.70717L13.7071 0.292969L20.4142 7.00007L13.7071 13.7072L12.2929 12.293L16.5858 8.00007H11C4.2536 8.00007 2 10.3438 2 17.0001H0C0 9.25637 3.1311 6.00007 11 6.00007H16.5858Z" fill="#393939" />
                             </svg></button>
-                        
+
                         <input type="text" placeholder="Градус" class="rotate-input" style="display: none;">
 
                         <!--       <div class="def-number-input number-input safari_only">
@@ -138,14 +142,14 @@ $this->title = 'Страница редактирования';
                     </div>
 
                     <div class="text-center flex-column">
- 
-                  <!--      <button class="button-no-active shadow_none add btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        <!--      <button class="button-no-active shadow_none add btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             +
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
                             <button class="dropdown-item add-item" value="text" type="button">Текст</button>
                         </div>-->
-                                
+
 
                         <button class="button-no-active shadow_none btn btn--primary button-studio"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C12 4.2874 12.0303 4.5678 12.0879 4.838L7.0169 7.3735C6.2836 6.5319 5.2039 6 4 6C1.79086 6 0 7.7909 0 10C0 12.2091 1.79086 14 4 14C5.2039 14 6.2836 13.4681 7.0169 12.6265L12.0879 15.162C12.0303 15.4322 12 15.7126 12 16C12 18.2091 13.7909 20 16 20C18.2091 20 20 18.2091 20 16C20 13.7909 18.2091 12 16 12C14.7961 12 13.7164 12.5319 12.9831 13.3735L7.9121 10.838C7.9697 10.5678 8 10.2874 8 10C8 9.7126 7.9697 9.4322 7.9121 9.162L12.9831 6.6265C13.7164 7.4681 14.7961 8 16 8C18.2091 8 20 6.2091 20 4C20 1.79086 18.2091 0 16 0C13.7909 0 12 1.79086 12 4ZM6 10C6 11.1046 5.1046 12 4 12C2.8954 12 2 11.1046 2 10C2 8.8954 2.8954 8 4 8C5.1046 8 6 8.8954 6 10ZM16 6C17.1046 6 18 5.1046 18 4C18 2.8954 17.1046 2 16 2C14.8954 2 14 2.8954 14 4C14 5.1046 14.8954 6 16 6ZM18 16C18 17.1046 17.1046 18 16 18C14.8954 18 14 17.1046 14 16C14 14.8954 14.8954 14 16 14C17.1046 14 18 14.8954 18 16Z" fill="#393939" />
@@ -153,7 +157,7 @@ $this->title = 'Страница редактирования';
 
 
                         <button class="window-menu button-no-active shadow_none save btn btn--primary button-studio save-button save-button-menu" type="button"><svg class="window-menu" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="window-menu fill-rule="evenodd" clip-rule="evenodd" d="M14.2929 7.2929L11 10.5858V0H9V10.5858L5.7071 7.2929L4.2929 8.7071L10 14.4142L15.7071 8.7071L14.2929 7.2929ZM20 18V14H18V18H2V14H0V18C0 19.1046 0.89543 20 2 20H18C19.1046 20 20 19.1046 20 18Z" fill="#393939" />
+                                <path class="window-menu fill-rule=" evenodd" clip-rule="evenodd" d="M14.2929 7.2929L11 10.5858V0H9V10.5858L5.7071 7.2929L4.2929 8.7071L10 14.4142L15.7071 8.7071L14.2929 7.2929ZM20 18V14H18V18H2V14H0V18C0 19.1046 0.89543 20 2 20H18C19.1046 20 20 19.1046 20 18Z" fill="#393939" />
                             </svg>
                         </button>
                         <div class="window-menu dropdown-menu dropdown-menu-save" aria-labelledby="dropdownMenuMenuFormat">
@@ -190,9 +194,9 @@ $this->title = 'Страница редактирования';
 
             <div class="row over justify-content-center h-100">
                 <div class="index-1 align-self-center main-svg">
-                <div class="draggable" id='example'>
+                    <div class="draggable" id='example'>
 
-</div>
+                    </div>
                 </div>
 
 
@@ -211,27 +215,27 @@ $this->title = 'Страница редактирования';
             </div> -->
                 <div class="position-absolute fixed-bottom">
 
-                       <div class="index-0 w-100">
-                <div class="d-flex card-body justify-content-end ">
-                    
-                    
-                      <button class="button-no-active-plus shadow_none add btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="30" cy="30" r="30" fill="white"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M31 29H40V31H31V40H29V31H20V29H29V20H31V29Z" fill="#393939"/>
-</svg>
+                    <div class="index-0 w-100">
+                        <div class="d-flex card-body justify-content-end ">
 
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
-                            <button class="dropdown-item label_color_16 add-item" value="text" type="button">Текст</button>
-                            <button class="dropdown-item label_color_16 add-item" value="img" type="button">Изображение</button>
+
+                            <button class="button-no-active-plus shadow_none add btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="30" fill="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M31 29H40V31H31V40H29V31H20V29H29V20H31V29Z" fill="#393939" />
+                                </svg>
+
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
+                                <button class="dropdown-item label_color_16 add-item" value="text" type="button">Текст</button>
+                                <button class="dropdown-item label_color_16 add-item" value="img" type="button">Изображение</button>
+                            </div>
+
+
+
                         </div>
-                    
-                    
 
-                </div>
-
-            </div>
+                    </div>
 
                     <!--    <div class="m-5 def-number-input number-input safari_only">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
@@ -283,9 +287,9 @@ $this->title = 'Страница редактирования';
                                     </svg>
                                 </button>
                                 <button id="weight" class="button-no-active btn shadow_none btn--primary button-studio text-style">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4297 11.348C18.5154 12.1296 20 14.1414 20 16.5C20 19.5376 17.5376 22 14.5 22H6V2H12.5C15.5376 2 18 4.46243 18 7.5C18 8.99801 17.4011 10.3562 16.4297 11.348ZM12.5 11C14.433 11 16 9.433 16 7.5C16 5.567 14.433 4 12.5 4H8V11H12.5ZM8 20V13H14.5C16.433 13 18 14.567 18 16.5C18 18.433 16.433 20 14.5 20H8Z" fill="#393939" />
-                                </svg>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4297 11.348C18.5154 12.1296 20 14.1414 20 16.5C20 19.5376 17.5376 22 14.5 22H6V2H12.5C15.5376 2 18 4.46243 18 7.5C18 8.99801 17.4011 10.3562 16.4297 11.348ZM12.5 11C14.433 11 16 9.433 16 7.5C16 5.567 14.433 4 12.5 4H8V11H12.5ZM8 20V13H14.5C16.433 13 18 14.567 18 16.5C18 18.433 16.433 20 14.5 20H8Z" fill="#393939" />
+                                    </svg>
                                 </button>
                                 <button id="style" class="button-no-active btn shadow_none btn--primary button-studio text-style">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -395,8 +399,8 @@ $this->title = 'Страница редактирования';
 </div>
 
 <div class="list-group contextmenu">
-   <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
-  <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
-  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-  <button type="button" class="list-group-item list-group-item-action" disabled>Vestibulum at eros</button>
-        </div>
+    <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+    <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+    <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+    <button type="button" class="list-group-item list-group-item-action" disabled>Vestibulum at eros</button>
+</div>
