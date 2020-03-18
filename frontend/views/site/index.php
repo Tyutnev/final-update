@@ -56,11 +56,6 @@ $this->title = 'Страница редактирования';
 
                             </ul>
                         </div>
-                        <!-- Show more button -->
-                        <div>
-                            <button class="btn btn-succrss show-more">Показать еще</button>
-                        </div>
-                        <!-- End show more button -->
                     </section>
 
                     <section class="font-section" style="display: none;">

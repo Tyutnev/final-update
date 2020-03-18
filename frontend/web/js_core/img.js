@@ -42,10 +42,9 @@
                 </div>
             </div>
             </div>
+            <button class="btn btn-succrss show-more">Показать еще</button>
         </li>
         `);
-
-        //<button class="btn btn-succrss show-more">Показать еще</button>
     };
 
     /**

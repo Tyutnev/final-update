@@ -11,7 +11,7 @@ class Img extends ActiveRecord
     public $file;
     public $files;
 
-    const DEFAULT_LIMIT = 30;
+    const DEFAULT_LIMIT = 50;
 
     /**
      * Лимит выборки изображений

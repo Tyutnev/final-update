@@ -23,6 +23,18 @@ const updateCurrentFont = () => {
     $('.current-font').html($(CURRENT_EDIT_ELEMENT).css('font-family').split(',')[0])
 };
 
+const divToBr = () => {
+    let content = $(CURRENT_EDIT_ELEMENT).html();
+
+    if (!content) return;
+
+    while (content.match('div')) {
+        content = content.replace('<div>', '<br>');
+        content = content.replace('</div>', '');
+    }
+    $(CURRENT_EDIT_ELEMENT).html(content);
+}
+
 /**
  * Обновление панели инструментов
  * @param {object} event 
@@ -85,8 +97,6 @@ const editableHandler = (event) => {
     console.log(target.prop('tagName'));
 
     event.stopPropagation();
-
-    let oldWidth;
 
     if (!draggable) {
         draggable = new Moveable(document.body, {
@@ -155,6 +165,10 @@ const editableHandler = (event) => {
         }).on("rotateEnd", ({ target, isDrag, clientX, clientY }) => {
             console.log("onRotateEnd", target, isDrag);
         });
+    }
+
+    if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'text') {
+        divToBr();
     }
 
     //Убираем атрибут редактирования с прошлого редактируемого элемента
