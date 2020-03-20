@@ -31,7 +31,8 @@
         }
 
         $('[data-set="true"]').click((event) => {
-            if ($(event.target).attr('clickCounter') == '2') return;
+            let clickCounter = +$(event.target).attr('clickCounter');
+            if (clickCounter == 1) return;
 
             editableHandler(event);
         });
@@ -39,22 +40,19 @@
         $('.draggable').css('cursor', 'move');
 
         $('[data-type="text"]').css('line-height', 'normal');
-        $('[data-type="text]').attr('clickCounter', '0');
+        $('[data-type="text]').attr('clickCounter', 0);
 
         $('[data-type="text"]').click((event) => {
             let clickCounter = +$(event.target).attr('clickCounter');
 
-            if (clickCounter == 2) {
-
+            if (clickCounter == 1) {
                 draggable.draggable = false;
                 draggable.snappable = false;
-                $('.draggable').css('cursor', 'text');
-
-                return;
+                $(event.target).css('cursor', 'text');
+            } else {
+                clickCounter++;
+                $(event.target).attr('clickCounter', clickCounter);
             }
-
-            clickCounter++;
-            $(event.target).attr('clickCounter', clickCounter);
         });
 
         /*
@@ -72,8 +70,8 @@
         $('[data-type="text"]').blur((event) => {
             draggable.draggable = true;
             draggable.snappable = true;
-            $('.draggable').css('cursor', 'move');
-            $(event.target).attr('clickCounter', '0');
+            $(event.target).css('cursor', 'move');
+            $(event.target).attr('clickCounter', 0);
         });
 
         $('.main-svg').contextmenu((event) => {
