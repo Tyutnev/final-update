@@ -163,9 +163,12 @@
 
                     $(CURRENT_EDIT_ELEMENT).css('font-family', title);
                     updateCurrentFont();
+                    draggable.updateRect();
+                    draggable.updateTarget();
                 });
             }
-        })
+        });
+
     });
 
     $('.format-button').click((event) => {

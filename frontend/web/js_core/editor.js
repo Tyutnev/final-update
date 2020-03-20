@@ -270,14 +270,20 @@ const editWeightText = (event) => {
  */
 const editItalicText = (event) => {
     toggleCss('data-style-italic', 'font-style', 'italic', 'normal', '#style');
+    draggable.updateRect();
+    draggable.updateTarget();
 }
 
 const editUnderlineText = (event) => {
     toggleCss('data-style-underline', 'text-decoration', 'underline', 'none', '#underline');
+    draggable.updateRect();
+    draggable.updateTarget();
 }
 
 const editSizeText = (event) => {
     $(CURRENT_EDIT_ELEMENT).css('font-size', $('.quantity').val() + 'px');
+    draggable.updateRect();
+    draggable.updateTarget();
 }
 
 /**
@@ -377,7 +383,6 @@ const addTextNode = (event) => {
             font-size: 25px;
             color: #000;
         "
-
          contenteditable="true" 
          class="draggable" 
          data-set="true" 
@@ -464,6 +469,7 @@ $('.size-tool-button').click((event) => {
     $('.scale').val(currentScale);
     $('.main-svg').css('transform', `scale(${currentScale / 100})`);
     draggable.updateRect();
+    draggable.updateTarget();
 });
 
 $('.pcr-swatches').click((event) => {
