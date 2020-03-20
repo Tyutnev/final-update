@@ -8686,7 +8686,7 @@ mark {
 
 .search-input__btn:focus .icon,
 .search-input .form-control:focus + .search-input__btn .icon {
-    color: var(--color-primary)
+    color: #d3d3d3;
 }
 
 :root {

@@ -251,9 +251,9 @@
 }
 
 .content-block {
-    width: 25%;
+    width: 42%;
+    margin: 10px 0px;
     display: block;
-    height: 100px;
     background: #fff;
     border: none
 }

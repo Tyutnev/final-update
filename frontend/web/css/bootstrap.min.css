@@ -2359,39 +2359,39 @@ pre code {
 
 .form-control:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 #495057
+    text-shadow: 0 0 0 #D3D3D3
 }
 
 .form-control:focus {
-    color: #495057;
+    color: #393939;
     background-color: #fff;
-    border-color: #80bdff;
+    border-color: #D3D3D3;
     outline: 0;
-    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+    box-shadow: 0 0 0 .2rem #D3D3D3!important;
 }
 
 .form-control::-webkit-input-placeholder {
-    color: #6c757d;
+    color: #393939;
     opacity: 1
 }
 
 .form-control::-moz-placeholder {
-    color: #6c757d;
+    color: #393939;
     opacity: 1
 }
 
 .form-control:-ms-input-placeholder {
-    color: #6c757d;
+    color: #393939;
     opacity: 1
 }
 
 .form-control::-ms-input-placeholder {
-    color: #6c757d;
+    color: #D3D3D3;
     opacity: 1
 }
 
 .form-control::placeholder {
-    color: #6c757d;
+    color: #D3D3D3;
     opacity: 1
 }
 
@@ -2402,7 +2402,7 @@ pre code {
 }
 
 select.form-control:focus::-ms-value {
-    color: #495057;
+    color: #D3D3D3;
     background-color: #fff
 }
 
@@ -8773,7 +8773,7 @@ button.bg-dark:hover {
     right: 0;
     bottom: 0;
     left: 0;
-  /* z-index: 1030*/
+    z-index: 1030*/
 }
 
 @supports ((position:-webkit-sticky) or (position:sticky)) {
