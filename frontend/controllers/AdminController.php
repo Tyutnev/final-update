@@ -7,6 +7,7 @@ use yii\web\Controller;
 use frontend\models\Img;
 use frontend\models\Html;
 use yii\web\UploadedFile;
+use frontend\models\Category;
 
 class AdminController extends Controller
 {
@@ -62,6 +63,20 @@ class AdminController extends Controller
         return $this->render('create', [
             'img' => $img,
             'html' => $html
+        ]);
+    }
+
+    public function actionCategory()
+    {
+        return $this->render('category', [
+            'categories' => Category::get()
+        ]);
+    }
+
+    public function actionCategoryUpdate($id)
+    {
+        return $this->render('update', [
+            ''
         ]);
     }
 
