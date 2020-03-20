@@ -32,6 +32,7 @@
 
         $('[data-set="true"]').click(editableHandler);
         $('[data-set="true"]').click(getToolsPanel);
+        $('.draggable').css('cursor', 'move');
 
         $('[data-type="text"]').css('line-height', 'normal');
 
