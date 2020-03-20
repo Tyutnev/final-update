@@ -17,6 +17,14 @@ use frontend\models\Category;
 
     ?>
     <?= $form->field($html, 'content')->textInput(['placeholder' => 'HTML'])->label(false) ?>
+    
+    <?= $form->field($img, 'is_node_in_list')->checkbox()->label(false); ?>
+    
+    <?= $form->field($htmlList, 'id_root')->textInput(['placeholder' => 'Идентификатор главного узла'])->label(false) ?>
+
+    <?= $form->field($htmlList, 'node_order')->textInput(['placeholder' => 'Порядок в котором она должна идти'])->label(false) ?>
+
+
     <?= Html::submitButton('Create', ['class' => 'btn btn-success']) ?>
     <?php if( Yii::$app->session->hasFlash('success') ): ?>
  <div class="alert alert-success alert-dismissible" role="alert">

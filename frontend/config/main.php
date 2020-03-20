@@ -40,7 +40,10 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'admin/detail/<id:\d+>' => 'admin/detail'
+                'admin/detail/<id:\d+>' => 'admin/detail',
+                'admin/category/update/<id:\d+>' => 'admin/category-update',
+                'admin/category/create' => 'admin/category-create',
+                'admin/category-delete' => 'admin/category-delete'
             ],
         ]
     ],

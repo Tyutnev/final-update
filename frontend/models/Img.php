@@ -26,7 +26,8 @@ class Img extends ActiveRecord
     public function rules()
     {
         return [
-            ['id_category', 'safe']
+            ['id_category', 'safe'],
+            ['is_node_in_list', 'safe']
         ];
     }
 

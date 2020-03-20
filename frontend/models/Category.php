@@ -18,4 +18,9 @@ class Category extends ActiveRecord
     {
         return self::find()->asArray()->all();
     }
+
+    public static function findById($id)
+    {
+        return self::find()->where(['id' => $id])->one();
+    }
 };

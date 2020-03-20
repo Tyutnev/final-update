@@ -8,6 +8,7 @@ use frontend\models\Img;
 use frontend\models\Html;
 use yii\web\UploadedFile;
 use frontend\models\Category;
+use frontend\models\HtmlList;
 
 class AdminController extends Controller
 {
@@ -35,6 +36,7 @@ class AdminController extends Controller
     {
         $img = new Img();
         $html = new Html();
+        $htmlList = new HtmlList();
 
         if (Yii::$app->request->isPost && $html->load(Yii::$app->request->post())) {
             
@@ -54,6 +56,13 @@ class AdminController extends Controller
                 $img->load(Yii::$app->request->post());
                 if($img->save())
                 {
+                    if((int)Yii::$app->request->post('Img')['is_node_in_list'])
+                    {
+                        $htmlList->load(Yii::$app->request->post());
+                        $htmlList->node = $img->id;
+                        $htmlList->save();
+                    }
+
                     var_dump('Шаблон загружен');
                     return;
                 }
@@ -62,7 +71,8 @@ class AdminController extends Controller
 
         return $this->render('create', [
             'img' => $img,
-            'html' => $html
+            'html' => $html,
+            'htmlList' => $htmlList
         ]);
     }
 
@@ -73,11 +83,44 @@ class AdminController extends Controller
         ]);
     }
 
+    public function actionCategoryCreate() 
+    {
+        if(Yii::$app->request->isPost)
+        {
+            $category = new Category();
+            $category->title = Yii::$app->request->post('title');
+            $category->save();
+            var_dump('Категория сохранена');
+            return;
+        }
+
+        return $this->render('category-create');
+    }
+
     public function actionCategoryUpdate($id)
     {
+        $category = Category::findById($id);
+
+        if(Yii::$app->request->isPost)
+        {
+            $category->title = Yii::$app->request->post('title');
+            $category->save();
+            var_dump('Данные изменены');
+            return;
+        }
+
         return $this->render('update', [
-            ''
+            'category' => $category
         ]);
+    }
+
+    public function actionCategoryDelete()
+    {
+        if(Yii::$app->request->isAjax)
+        {
+            $category = Category::findById((int)Yii::$app->request->post('id'));
+            $category->delete();
+        } 
     }
 
     public function actionUpdate()

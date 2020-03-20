@@ -11,6 +11,14 @@ class HtmlList extends ActiveRecord
         return 'html_list';
     }
 
+    public function rules()
+    {
+        return [
+            ['id_root', 'safe'],
+            ['node_order', 'safe']
+        ];
+    }
+
     /**
      * Получение всех id html list'а у узла
      */

@@ -235,7 +235,7 @@ $('.delete-template').click((event) => {
 $('.delete-true').click((event) => {
     $.ajax({
         type: 'POST',
-        url: '/admin/delete',
+        url: $(event.target).attr('data-url'),
         data: {
             id: $(event.target).attr('data-id')
         },

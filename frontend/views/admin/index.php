@@ -26,7 +26,7 @@
                 <a class="btn btn-danger delete-template" style="cursor:pointer;">Удалить</a>
                 <div class="alert-delete" style="display: none;">
                     <span>Вы действительно хотите удалить шаблон?</span>
-                    <button class="btn btn-danger delete-true" data-id="<?= $img->id ?>">Да</button>
+                    <button class="btn btn-danger delete-true" data-id="<?= $img->id ?>" data-url="/admin/delete">Да</button>
                     <button class="btn btn-success delete-false">Нет</button>
                 </div>
             </div>
