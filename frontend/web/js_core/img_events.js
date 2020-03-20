@@ -30,20 +30,30 @@
             $('.main-svg').css('transform', `scale(0.7)`);
         }
 
-        $('[data-set="true"]').click(editableHandler);
+        $('[data-set="true"]').click((event) => {
+            if ($(event.target).attr('data-dblclick')) return;
+            editableHandler(event);
+        });
         $('[data-set="true"]').click(getToolsPanel);
         $('.draggable').css('cursor', 'move');
 
         $('[data-type="text"]').css('line-height', 'normal');
 
         $('[data-type="text"]').dblclick((event) => {
+            if ($(event.target).attr('data-dblclick')) return;
+
             draggable.draggable = false;
             draggable.snappable = false;
+            $('.draggable').css('cursor', 'text');
+
+            $(event.target).attr('data-dblclick', 'true');
         });
 
         $('[data-type="text"]').blur((event) => {
             draggable.draggable = true;
             draggable.snappable = true;
+            $('.draggable').css('cursor', 'move');
+            $(event.target).removeAttr('data-dblclick');
         });
 
         $('.main-svg').contextmenu((event) => {
