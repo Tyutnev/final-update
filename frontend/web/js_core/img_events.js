@@ -68,10 +68,14 @@
         */
 
         $('[data-type="text"]').blur((event) => {
-            draggable.draggable = true;
-            draggable.snappable = true;
-            $(event.target).css('cursor', 'move');
-            $(event.target).attr('clickCounter', 0);
+            let clickCounter = +$(event.target).attr('clickCounter');
+
+            if (clickCounter == 1) {
+                draggable.draggable = true;
+                draggable.snappable = true;
+                $(event.target).css('cursor', 'move');
+                $(event.target).attr('clickCounter', 0);
+            }
         });
 
         $('.main-svg').contextmenu((event) => {
