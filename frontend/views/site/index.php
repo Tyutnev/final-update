@@ -149,7 +149,7 @@ $this->title = 'Страница редактирования';
                                 <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M16.5858 6.00007L12.2929 1.70717L13.7071 0.292969L20.4142 7.00007L13.7071 13.7072L12.2929 12.293L16.5858 8.00007H11C4.2536 8.00007 2 10.3438 2 17.0001H0C0 9.25637 3.1311 6.00007 11 6.00007H16.5858Z" fill="#393939" />
                             </svg></button>
 
-                        <input type="text" placeholder="Градус" class="rotate-input" style="display: none;">
+                        <!-- <input type="text" placeholder="Градус" class="rotate-input" style="display: none;"> -->
 
                         <!--       <div class="def-number-input number-input safari_only">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
