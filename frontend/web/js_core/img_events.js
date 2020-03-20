@@ -40,7 +40,7 @@
         $('.draggable').css('cursor', 'move');
 
         $('[data-type="text"]').css('line-height', 'normal');
-        $('[data-type="text]').attr('clickCounter', 0);
+        $('[data-type="text"]').attr('clickCounter', 0);
 
         $('[data-type="text"]').click((event) => {
             let clickCounter = +$(event.target).attr('clickCounter');
