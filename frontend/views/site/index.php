@@ -186,7 +186,7 @@ $this->title = 'Страница редактирования';
 
                         <button class="window-menu button-no-active shadow_none save btn btn--primary button-studio save-button save-button-menu" type="button">
                             
-                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="window-menu">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M22.2929 15.2929L19 18.5858V8H17V18.5858L13.7071 15.2929L12.2929 16.7071L18 22.4142L23.7071 16.7071L22.2929 15.2929ZM28 26V22H26V26H10V22H8V26C8 27.1046 8.89543 28 10 28H26C27.1046 28 28 27.1046 28 26Z" fill="#393939"/>
 </svg>
                             

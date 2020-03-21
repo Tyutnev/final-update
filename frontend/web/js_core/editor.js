@@ -525,10 +525,6 @@ $('.main-svg').click((event) => {
     draggable.target = '';
 })
 
-$('.save-button-menu').click((event) => {
-    $('.dropdown-menu-save').toggleClass('show-block');
-});
-
 $('.rotate-input').keyup((event) => {
     let rotate = $('.rotate-input').val();
     $(CURRENT_EDIT_ELEMENT).css('transform', `rotate(${rotate}deg)`);
@@ -536,6 +532,9 @@ $('.rotate-input').keyup((event) => {
 })
 
 $(window).click((event) => {
+    console.log(event.target);
+
+
     if ($(event.target).hasClass('window-menu')) return;
 
     if ($(event.target).hasClass('no-main-svg')) {

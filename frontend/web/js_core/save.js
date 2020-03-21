@@ -99,4 +99,10 @@
         if (format == 'jpeg') saveAsJpeg();
         if (format == 'pdf') saveAsPdf();
     })
+
+    $('.save-button-menu').click((event) => {
+        console.log('Here');
+
+        $('.dropdown-menu-save').toggleClass('show-block');
+    });
 })();

@@ -164,6 +164,7 @@ div[data-set="true"] {
 .show-block {
     display: block;
     left: 80%;
+    z-index: 100;
 }
 
 [contenteditable="true"] {
