@@ -209,7 +209,7 @@ $this->title = 'Страница редактирования';
                 </div>
             </div>
             <div class="w-100 no-main-svg">
-                <div class="d-flex index-0 card-body justify-content-center ">
+                <div class="d-flex index-0 card-body justify-content-center no-main-svg">
 
                     <div class="index-2 plus_btn def-number-input number-input safari_only">
                         <button class="minus plus_btn size-tool size-tool-button"></button>
