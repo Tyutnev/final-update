@@ -110,6 +110,8 @@ const updateTools = (event) => {
  * События начала редактирования текста
  */
 const editableHandler = (event) => {
+    event.stopPropagation();
+
     let target = $(event.target);
     let svg = ['path', 'g', 'svg'];
 
@@ -123,8 +125,6 @@ const editableHandler = (event) => {
     }
 
     console.log(target.prop('tagName'));
-
-    event.stopPropagation();
 
     if (!draggable) {
         draggable = new Moveable(document.body, {
@@ -538,11 +538,10 @@ $('.rotate-input').keyup((event) => {
 $(window).click((event) => {
     if ($(event.target).hasClass('window-menu')) return;
 
-    if ($(event.target).prop('tagName') == 'MAIN') {
-        console.log('Here');
-        $('.tools-panel-default').show();
+    if ($(event.target).hasClass('no-main-svg')) {
         $('.tools-panel-text').hide();
-        draggable.target = '';
+        $('.tools-panel-default').show();
+        if (draggable) draggable.target = '';
     }
 
     $('.dropdown-menu-save').removeClass('show-block');

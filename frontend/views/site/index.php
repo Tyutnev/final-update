@@ -222,9 +222,9 @@ $this->title = 'Страница редактирования';
         </div>
 
 
-        <div class="container h-100">
+        <div class="container h-100 no-main-svg">
 
-            <div class="row over justify-content-center h-100">
+            <div class="row over justify-content-center h-100 no-main-svg">
                 <div class="index-1 align-self-center main-svg">
                     <div class="draggable" id='example'>
 
@@ -270,8 +270,9 @@ $this->title = 'Страница редактирования';
 
 
 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M17 22H10C8.92671 22 8 21.2057 8 20.1429V15.8571C8 14.7943 8.92671 14 10 14H17V8H19V14H26C27.0733 14 28 14.7943 28 15.8571V20.1429C28 21.2057 27.0733 22 26 22H19V28H17V22ZM10 16V20H26V16H10Z" fill="#393939"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M20.1429 25H15.8571C14.7943 25 14 24.0733 14 23V10C14 8.92671 14.7943 8 15.8571 8H20.1429C21.2057 8 22 8.92671 22 10V23C22 24.0733 21.2057 25 20.1429 25ZM20 10H16V23H20V10ZM8 26V28H28V26H8Z" fill="#393939"/>
 </svg>
+
                                      
                                 </button> 
                                                                  <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
@@ -454,8 +455,8 @@ $this->title = 'Страница редактирования';
                             <div class="text-center flex-column tool-item style-tool">
                                                                                      
                                                               <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
-                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M28 8H26V28H28V8ZM25 15.8571V20.1429C25 21.2057 24.0733 22 23 22H10C8.92671 22 8 21.2057 8 20.1429V15.8571C8 14.7943 8.92671 14 10 14H23C24.0733 14 25 14.7943 25 15.8571ZM10 16V20H23V16H10Z" fill="#393939"/>
+                                   <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M17 22H10C8.92671 22 8 21.2057 8 20.1429V15.8571C8 14.7943 8.92671 14 10 14H17V8H19V14H26C27.0733 14 28 14.7943 28 15.8571V20.1429C28 21.2057 27.0733 22 26 22H19V28H17V22ZM10 16V20H26V16H10Z" fill="#393939"/>
 </svg>
                                 </button>       
                                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
@@ -490,8 +491,8 @@ $this->title = 'Страница редактирования';
                             <!-- Container -->
                             <div class="text-center flex-column tool-item file-tool">
                                 <fieldset class="file-upload">
-                                    <label for="upload1" class="btn_main shadow_none file-upload__label btn btn--subtle h-36">
-                                        <span class="file-upload__text file-upload__text--has-max-width">Upload a file</span>
+                                    <label for="upload1" class="btn_upload shadow_none file-upload__label btn btn--subtle h-36">
+                                        <span class="file-upload__text file-upload__text--has-max-width">Загрузить изображение</span>
                                     </label>
                                     <input type="file" class="file-upload__input" name="upload1" id="upload1">
                                 </fieldset>
