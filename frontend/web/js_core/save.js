@@ -88,9 +88,25 @@
             url: '/img/pdf',
             data: {
                 html: $('.main-svg').html()
+            },
+            success: (html) => {
+                window.location.href = '/' + html;
             }
         })
     }
+
+    let makeScreen = () => {
+        // в html2canvas передаем id контента
+        html2canvas($('.main-svg').get(0), {
+            scale: 2 // Дополнительные опции
+        }).then(function(canvas) {
+            // когда canvas сформирован отправялем его скачиваться с помощью FileSaver
+            canvas.toBlob(function(blob) {
+                // тут можно установить название сохраняемого файла
+                saveAs(blob, "application.png");
+            });
+        });
+    };
 
     $('.format-save-item').click((event) => {
         let format = $(event.target).val();

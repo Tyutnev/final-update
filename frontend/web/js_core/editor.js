@@ -532,9 +532,6 @@ $('.rotate-input').keyup((event) => {
 })
 
 $(window).click((event) => {
-    console.log(event.target);
-
-
     if ($(event.target).hasClass('window-menu')) return;
 
     if ($(event.target).hasClass('no-main-svg')) {
