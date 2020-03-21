@@ -113,7 +113,7 @@ const editableHandler = (event) => {
     event.stopPropagation();
 
     let target = $(event.target);
-    let svg = ['path', 'g', 'svg'];
+    let svg = ['path', 'g', 'svg', 'rect'];
 
     for (let i = 0; i < svg.length; i++) {
         if (target.prop('tagName') == svg[i]) {
