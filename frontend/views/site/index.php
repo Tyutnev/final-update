@@ -253,9 +253,9 @@ $this->title = 'Страница редактирования';
 
                             
                             
-                            <div class="card border-0 decoration index-2 tools-panel tools-panel-default d-flex justify-content-start ">
+                            <div class="card border-0 decoration index-2 tools-panel tools-panel-default d-flex justify-content-start">
                                 
-                                <div class="flex-column">
+                                <div class="flex-column style-block-container hide">
                        
                                                                  <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
 
@@ -339,7 +339,7 @@ $this->title = 'Страница редактирования';
                             
                                            <div class="card border-0 decoration index-2 tools-panel tools-panel-default d-flex justify-content-start ">
                                 
-                                <div class="flex-column">
+                                <div class="flex-column style-text-container hide">
                        
                                 
                                  <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
@@ -454,12 +454,12 @@ $this->title = 'Страница редактирования';
                                         <!-- Container -->
                             <div class="text-center flex-column tool-item style-tool">
                                                                                      
-                                                              <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
+                                                              <button id="style-block" class="button-no-active shadow_none btn btn--primary button-studio">
                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M17 22H10C8.92671 22 8 21.2057 8 20.1429V15.8571C8 14.7943 8.92671 14 10 14H17V8H19V14H26C27.0733 14 28 14.7943 28 15.8571V20.1429C28 21.2057 27.0733 22 26 22H19V28H17V22ZM10 16V20H26V16H10Z" fill="#393939"/>
 </svg>
                                 </button>       
-                                                                                <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
+                                                                                <button id="style-text" class="button-no-active shadow_none btn btn--primary button-studio">
                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM25 15V17H11V15H25ZM28 21V19H8V21H28ZM25 25V23H11V25H25Z" fill="#393939"/>
 </svg>

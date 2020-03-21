@@ -220,6 +220,11 @@ const editableHandler = (event) => {
         defaultRect();
     }
 
+    if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'background-color') {
+        draggable.draggable = false;
+        draggable.resizable = false;
+    }
+
     $(CURRENT_EDIT_ELEMENT).keyup((event) => {
         draggable.updateRect();
     });
@@ -541,4 +546,12 @@ $(window).click((event) => {
     }
 
     $('.dropdown-menu-save').removeClass('show-block');
+});
+
+$('#style-block').click((event) => {
+    $('.style-block-container').toggleClass('hide');
+});
+
+$('#style-text').click((event) => {
+    $('.style-text-container').toggleClass('hide');
 });
