@@ -119,19 +119,52 @@
             $('.main-svg').css('transform', `scale(0.7)`);
         }
 
-        $('[data-set="true"]').click(editableHandler);
+        $('[data-set="true"]').click((event) => {
+            let clickCounter = +$(event.target).attr('clickCounter');
+            if (clickCounter == 1) return;
+
+            editableHandler(event);
+        });
         $('[data-set="true"]').click(getToolsPanel);
+        $('.draggable').css('cursor', 'move');
 
         $('[data-type="text"]').css('line-height', 'normal');
+        $('[data-type="text"]').attr('clickCounter', 0);
 
-        $('[data-type="text"]').dblclick((event) => {
-            draggable.draggable = false;
-            draggable.snappable = false;
+        $('[data-type="text"]').click((event) => {
+            let clickCounter = +$(event.target).attr('clickCounter');
+
+            if (clickCounter == 1) {
+                draggable.draggable = false;
+                draggable.snappable = false;
+                $(event.target).css('cursor', 'text');
+            } else {
+                clickCounter++;
+                $(event.target).attr('clickCounter', clickCounter);
+            }
         });
 
+        /*
+        $('[data-type="text"]').dblclick((event) => {
+            if ($(event.target).attr('data-dblclick')) return;
+
+            draggable.draggable = false;
+            draggable.snappable = false;
+            $('.draggable').css('cursor', 'text');
+
+            $(event.target).attr('data-dblclick', 'true');
+        });
+        */
+
         $('[data-type="text"]').blur((event) => {
-            draggable.draggable = true;
-            draggable.snappable = true;
+            let clickCounter = +$(event.target).attr('clickCounter');
+
+            if (clickCounter == 1) {
+                draggable.draggable = true;
+                draggable.snappable = true;
+                $(event.target).css('cursor', 'move');
+                $(event.target).attr('clickCounter', 0);
+            }
         });
 
         $('.main-svg').contextmenu((event) => {
