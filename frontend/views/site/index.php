@@ -122,7 +122,7 @@ $this->title = 'Страница редактирования';
         </div>
     </aside>
 
-    <main class="w-100 position-relative">
+    <main class="w-100 position-relative no-main-svg">
         <!-- start main content -->
         <div class="position-absolute fixed-top">
 
