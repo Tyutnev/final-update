@@ -103,7 +103,7 @@ class ImgController extends Controller
 
             $fileName = 'uploads/pdf/' . Yii::$app->security->generateRandomString(16) . '.pdf';
 
-            $client-> setPageWidth(Yii::$app->request->post('width') . 'px');
+            $client-> setPageWidth(Yii::$app->request->post('width') / 1.1 . 'px');
             $client-> setPageHeight(Yii::$app->request->post('height') . 'px');
 
 
