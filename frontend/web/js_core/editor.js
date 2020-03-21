@@ -537,5 +537,13 @@ $('.rotate-input').keyup((event) => {
 
 $(window).click((event) => {
     if ($(event.target).hasClass('window-menu')) return;
+
+    if ($(event.target).prop('tagName') == 'MAIN') {
+        console.log('Here');
+        $('.tools-panel-default').show();
+        $('.tools-panel-text').hide();
+        draggable.target = '';
+    }
+
     $('.dropdown-menu-save').removeClass('show-block');
 });
