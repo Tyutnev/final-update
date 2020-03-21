@@ -30,7 +30,9 @@
             type: 'POST',
             url: '/img/pdf',
             data: {
-                html: $('.main-svg').html()
+                html: $('.main-svg').html(),
+                width: parseInt($('.main-svg').css('width')),
+                height: parseInt($('.main-svg').css('height'))
             },
             success: (html) => {
                 window.location.href = '/' + html;

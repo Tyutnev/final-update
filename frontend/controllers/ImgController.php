@@ -103,6 +103,10 @@ class ImgController extends Controller
 
             $fileName = 'uploads/pdf/' . Yii::$app->security->generateRandomString(16) . '.pdf';
 
+            $client-> setPageWidth(Yii::$app->request->post('width') . 'px');
+            $client-> setPageHeight(Yii::$app->request->post('height') . 'px');
+
+
             // run the conversion and write the result to a file
             $client->convertStringToFile(Yii::$app->request->post('html'), $fileName);
 
