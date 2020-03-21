@@ -88,7 +88,8 @@ class ImgController extends Controller
         }
     }
 
-    function download_file($file, $name) {
+    function download_file($file, $name)
+    {
         header('Content-Type: application/octet-stream');
         header('Content-Disposition: attachment; filename=' . $name);
         exit(readfile($file));
@@ -96,23 +97,68 @@ class ImgController extends Controller
 
     public function actionPdf()
     {
-        try
-        {
+        try {
             // create the API client instance
             $client = new \Pdfcrowd\HtmlToPdfClient("colortest", "ef0c5cf8db1f171effa15f024e3da830");
 
             $fileName = 'uploads/pdf/' . Yii::$app->security->generateRandomString(16) . '.pdf';
-        
+
             // run the conversion and write the result to a file
             $client->convertStringToFile(Yii::$app->request->post('html'), $fileName);
 
             echo $fileName;
-        }
-        catch(\Pdfcrowd\Error $why)
-        {
+        } catch (\Pdfcrowd\Error $why) {
             // report the error
             error_log("Pdfcrowd Error: {$why}\n");
+
+            // rethrow or handle the exception
+            throw $why;
+        }
+    }
+
+    public function actionPng()
+    {
+        try {
+            // create the API client instance
+            $client = new \Pdfcrowd\HtmlToImageClient("colortest", "ef0c5cf8db1f171effa15f024e3da830");
+
+            $fileName = 'uploads/png/' . Yii::$app->security->generateRandomString(16) . '.png';
+
+            // configure the conversion
+            $client->setOutputFormat("png");
+
+            // run the conversion and write the result to a file
+            $client->convertStringToFile(Yii::$app->request->post('html'), $fileName);
         
+            echo $fileName;
+        } catch (\Pdfcrowd\Error $why) {
+            // report the error
+            error_log("Pdfcrowd Error: {$why}\n");
+
+            // rethrow or handle the exception
+            throw $why;
+        }
+    }
+
+    public function actionJpeg()
+    {
+        try {
+            // create the API client instance
+            $client = new \Pdfcrowd\HtmlToImageClient("colortest", "ef0c5cf8db1f171effa15f024e3da830");
+
+            $fileName = 'uploads/jpg/' . Yii::$app->security->generateRandomString(16) . '.jpg';
+
+            // configure the conversion
+            $client->setOutputFormat("jpg");
+
+            // run the conversion and write the result to a file
+            $client->convertStringToFile(Yii::$app->request->post('html'), $fileName);
+        
+            echo $fileName;
+        } catch (\Pdfcrowd\Error $why) {
+            // report the error
+            error_log("Pdfcrowd Error: {$why}\n");
+
             // rethrow or handle the exception
             throw $why;
         }
