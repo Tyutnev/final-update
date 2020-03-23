@@ -54,7 +54,8 @@
      * @param {string} container
      */
     const renderImage = (image, container) => {
-
+        console.log(image);
+        console.log(container);
         if ($(container).last().children().length == 3) {
             let parent = $(container).parent();
             parent.append(`
