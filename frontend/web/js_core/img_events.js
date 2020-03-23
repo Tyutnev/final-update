@@ -4,6 +4,8 @@
      */
     const CURRENT_EDIT = 'currentEditable';
 
+    let oldSection = '.html-list-section';
+
     /**
      * Атрибут для получения текущего редактируемого элемента
      */
@@ -155,13 +157,22 @@
     });
 
     $('.fonts').click((event) => {
+        if ($('.category-section:visible').get(0)) {
+            oldSection = '.category-section';
+        }
+        if ($('.html-list-section:visible').get(0)) {
+            oldSection = '.html-list-section';
+        }
+
         if ($('.font-section:visible').get(0)) {
             $('.font-section').hide();
-            $('.category-section').show();
+            $(oldSection).show();
             return;
         }
 
+
         $('.category-section').hide();
+        $('.html-list-section').hide();
         $('.font-section').show();
 
         $.ajax({
@@ -202,6 +213,26 @@
             }
         });
 
+    });
+
+    $('.category-button').click((event) => {
+        $('.fonts-list').empty();
+
+        if ($('.html-list-section:visible').get(0)) {
+            $('.html-list-section').hide();
+            $('.category-section').show();
+            return;
+        }
+
+        if ($('.font-section:visible').get(0) && oldSection == '.html-list-section') {
+            $('.font-section').hide();
+            $('.html-list-section').show();
+            return;
+        }
+
+        $('.font-section').hide();
+        $('.html-list-section').hide();
+        $('.category-section');
     });
 
     $('.format-button').click((event) => {
@@ -247,14 +278,6 @@ $('.delete-true').click((event) => {
 
 $('.delete-false').click((event) => {
     $(event.target).parent().fadeOut(300);
-});
-
-$('.category-button').click((event) => {
-    $('.font-section').hide();
-    $('.html-list-section').hide();
-    $('.category-section').show();
-    $('.fonts-list').empty();
-    $('.html-list-container').empty();
 });
 
 jQuery.fn.swapWith = function(to) {
