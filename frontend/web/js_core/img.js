@@ -54,9 +54,7 @@
      * @param {string} container
      */
     const renderImage = (image, container) => {
-        console.log(image);
-        console.log(container);
-        if ($(container).last().children().length == 3) {
+        if ($(container).last().children().length == 2) {
             let parent = $(container).parent();
             parent.append(`
                 <div class="row d-flex justify-content-around p-0 inner-container ${container.slice(1)}">
