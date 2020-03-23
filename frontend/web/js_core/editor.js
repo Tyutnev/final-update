@@ -564,4 +564,6 @@ $('.main-svg-container').scroll((event) => {
 
     draggable.updateRect();
     draggable.updateTarget();
+
+    console.log('Here');
 });
