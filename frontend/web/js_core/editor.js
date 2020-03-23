@@ -209,6 +209,7 @@ const editableHandler = (event) => {
 
     draggable.draggable = true;
     draggable.resizable = true;
+    draggable.snappable = true;
     draggable.keepRatio = false;
 
     if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'img') {
