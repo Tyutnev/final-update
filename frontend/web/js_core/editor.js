@@ -304,6 +304,7 @@ const editUnderlineText = (event) => {
 
 const editSizeText = (event) => {
     $(CURRENT_EDIT_ELEMENT).css('font-size', $('.quantity').val() + 'px');
+    if (!draggable) return;
     draggable.updateRect();
     draggable.updateTarget();
 }
