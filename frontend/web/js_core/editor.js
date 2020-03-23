@@ -490,6 +490,7 @@ $('.size-tool-button').click((event) => {
 
     $('.scale').val(currentScale);
     $('.main-svg').css('transform', `scale(${currentScale / 100})`);
+    if (!draggable) return;
     draggable.updateRect();
     draggable.updateTarget();
 });
