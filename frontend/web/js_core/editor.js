@@ -558,3 +558,10 @@ $('#style-block').click((event) => {
 $('#style-text').click((event) => {
     $('.style-text-container').toggleClass('hide');
 });
+
+$('.main-svg-container').scroll((event) => {
+    if (!draggable) return;
+
+    draggable.updateRect();
+    draggable.updateTarget();
+});
