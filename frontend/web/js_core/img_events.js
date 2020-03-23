@@ -232,7 +232,7 @@
 
         $('.font-section').hide();
         $('.html-list-section').hide();
-        $('.category-section');
+        $('.category-section').show();
     });
 
     $('.format-button').click((event) => {
