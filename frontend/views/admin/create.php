@@ -16,6 +16,9 @@ use frontend\models\Category;
         )->label(false);
 
     ?>
+
+    <?= $form->field($img, 'title')->textInput(['placeholder' => 'Название'])->label(false) ?>
+
     <?= $form->field($html, 'content')->textInput(['placeholder' => 'HTML'])->label(false) ?>
     
     <?= $form->field($img, 'is_node_in_list')->checkbox()->label(false); ?>

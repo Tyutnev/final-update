@@ -27,7 +27,8 @@ class Img extends ActiveRecord
     {
         return [
             ['id_category', 'safe'],
-            ['is_node_in_list', 'safe']
+            ['is_node_in_list', 'safe'],
+            ['title', 'safe']
         ];
     }
 

@@ -26,6 +26,17 @@ class AdminController extends Controller
         $img = Img::getById($id);
         $html = Html::getById($img->id_html);
 
+        if($img->load(Yii::$app->request->post()))
+        {
+            $img->file = UploadedFile::getInstance($img, 'file');
+            if ($path = $img->upload()) {
+                $img->src = $path;
+            }
+            if($img->save()) {
+                var_dump('Обложка изменена');
+            }
+        }
+
         return $this->render('detail', [
             'img' => $img,
             'html' => $html

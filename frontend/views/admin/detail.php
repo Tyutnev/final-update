@@ -1,4 +1,8 @@
 <?php
+
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+
 $content = htmlspecialchars($html->content);
 ?>
 
@@ -9,8 +13,11 @@ $content = htmlspecialchars($html->content);
     <img class="logo" src="/<?= $img->src ?>" width="500">
 </div>
 
-<h3 class="logo">HTML id</h3>
-<div class="logo html-id"><?= $html->id ?></div>
+<h3>Обложка</h3>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+    <?= $form->field($img, 'file')->fileInput()->label(false) ?>
+    <?= Html::submitButton('Загрузить', ['class' => 'btn btn-success']) ?>
+<?php ActiveForm::end() ?>
 
 <h3 class="logo">HTML</h3>
 
