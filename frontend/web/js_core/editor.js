@@ -97,8 +97,9 @@ const updateTools = (event) => {
     }
 
     if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'background-color') {
-        $('.pcr-button').css('color', currentEditable.css('background'));
-        updatePalette(currentEditable.css('color'));
+        let color = rgb2hex(currentEditable.parent().css('background'));
+        $('.pcr-button').css('color', color);
+        updatePalette(color);
         return;
     }
 
