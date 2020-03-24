@@ -224,7 +224,7 @@ $this->title = 'Страница редактирования';
 
         <div class="container h-100 no-main-svg">
 
-            <div class="row justify-content-center h-100 no-main-svg main-svg-container">
+            <div class="row over justify-content-center h-100 no-main-svg main-svg-container">
                 <div class="index-1 align-self-center main-svg">
                     <div class="draggable" id='example'>
 
