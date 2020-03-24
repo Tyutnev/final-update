@@ -196,11 +196,13 @@
                     let pathToFont = $(event.target).attr('data-src');
                     let title = $(event.target).html();
 
-                    $('head').append(`
+                    $('.main-svg').children().first().prepend(`
                         <style class="fonts-style">
                             @font-face {
                                 font-family: ${title};
-                                src: url(${pathToFont});
+                                src: url(http://color.ajoin.ru/${pathToFont}) format('truetype');
+                                font-weight: normal;
+                                font-style: normal;
                             }
                         </style>
                     `);
