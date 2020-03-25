@@ -128,7 +128,7 @@ const editableHandler = (event) => {
     console.log(target.prop('tagName'));
 
     if (!draggable) {
-        draggable = new Moveable($('.main-svg-container').get(0), {
+        draggable = new Moveable($('.main-svg').get(0), {
             draggable: true,
             throttleDrag: 0,
             resizable: true,
