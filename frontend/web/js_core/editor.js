@@ -127,77 +127,74 @@ const editableHandler = (event) => {
 
     console.log(target.prop('tagName'));
 
-    //if (draggable) draggable.destroy();
-    //$('.main-svg').get(0)
+    if (draggable) draggable.destroy();
 
-    if (!draggable) {
-        draggable = new Moveable(document.body, {
-            draggable: true,
-            throttleDrag: 0,
-            resizable: true,
-            throttleResize: 0,
-            scalable: true,
-            throttleScale: 0,
-            keepRatio: false,
-            snappable: true,
-            snapThreshold: 5,
-            snapCenter: true,
-            verticalGuidelines: [100, 200, 300],
-            horizontalGuidelines: [0, 100, 200],
-            elementGuidelines: document.querySelectorAll('[data-set="true"]'),
-            rotatable: true,
-            throttleRotate: 0,
-            rotationPosition: "top",
-        }).on("drag", ({ target, left, top, beforeDelta }) => {
-            target.style.left = left + "px";
-            target.style.top = top + "px";
-        }).on("resize", ({
-            target,
-            width,
-            height,
-            dist
-        }) => {
-            target.style.width = width + "px";
-            target.style.height = height + "px";
-        });
+    draggable = new Moveable($('.main-svg').get(0), {
+        draggable: true,
+        throttleDrag: 0,
+        resizable: true,
+        throttleResize: 0,
+        scalable: true,
+        throttleScale: 0,
+        keepRatio: false,
+        snappable: true,
+        snapThreshold: 5,
+        snapCenter: true,
+        verticalGuidelines: [100, 200, 300],
+        horizontalGuidelines: [0, 100, 200],
+        elementGuidelines: document.querySelectorAll('[data-set="true"]'),
+        rotatable: true,
+        throttleRotate: 0,
+        rotationPosition: "top",
+    }).on("drag", ({ target, left, top, beforeDelta }) => {
+        target.style.left = left + "px";
+        target.style.top = top + "px";
+    }).on("resize", ({
+        target,
+        width,
+        height,
+        dist
+    }) => {
+        target.style.width = width + "px";
+        target.style.height = height + "px";
+    });
 
-        const frame = {
-            translate: [0, 0],
-            rotate: 0
-        };
-        draggable.on("resizeStart", ({ target, set, setOrigin, dragStart }) => {
-            // Set origin if transform-orgin use %.
-            setOrigin(["%", "%"]);
+    const frame = {
+        translate: [0, 0],
+        rotate: 0
+    };
+    draggable.on("resizeStart", ({ target, set, setOrigin, dragStart }) => {
+        // Set origin if transform-orgin use %.
+        setOrigin(["%", "%"]);
 
-            // If cssSize and offsetSize are different, set cssSize. (no box-sizing)
-            const style = window.getComputedStyle(target);
-            const cssWidth = parseFloat(style.width);
-            const cssHeight = parseFloat(style.height);
-            set([cssWidth, cssHeight]);
-            // If a drag event has already occurred, there is no dragStart.
-            dragStart && dragStart.set(frame.translate);
-        }).on("resize", ({ target, width, height, drag }) => {
-            target.style.width = `${width}px`;
-            target.style.height = `${height}px`;
+        // If cssSize and offsetSize are different, set cssSize. (no box-sizing)
+        const style = window.getComputedStyle(target);
+        const cssWidth = parseFloat(style.width);
+        const cssHeight = parseFloat(style.height);
+        set([cssWidth, cssHeight]);
+        // If a drag event has already occurred, there is no dragStart.
+        dragStart && dragStart.set(frame.translate);
+    }).on("resize", ({ target, width, height, drag }) => {
+        target.style.width = `${width}px`;
+        target.style.height = `${height}px`;
 
-            //$(CURRENT_EDIT_ELEMENT).fitText();
+        //$(CURRENT_EDIT_ELEMENT).fitText();
 
-            // get drag event
-            frame.translate = drag.beforeTranslate;
-            target.style.transform = `translate(${drag.beforeTranslate[0]}px, ${drag.beforeTranslate[1]}px)`;
-        }).on("resizeEnd", ({ target, isDrag, clientX, clientY }) => {
-            console.log("onResizeEnd", target, isDrag);
-        });
-        draggable.on("rotateStart", ({set }) => {
-            set(frame.rotate);
-        }).on("rotate", ({ target, beforeRotate }) => {
-            frame.rotate = beforeRotate;
-            target.style.transform = `rotate(${beforeRotate}deg)`;
-            $('.rotate-input').val(Math.round(beforeRotate));
-        }).on("rotateEnd", ({ target, isDrag, clientX, clientY }) => {
-            console.log("onRotateEnd", target, isDrag);
-        });
-    }
+        // get drag event
+        frame.translate = drag.beforeTranslate;
+        target.style.transform = `translate(${drag.beforeTranslate[0]}px, ${drag.beforeTranslate[1]}px)`;
+    }).on("resizeEnd", ({ target, isDrag, clientX, clientY }) => {
+        console.log("onResizeEnd", target, isDrag);
+    });
+    draggable.on("rotateStart", ({set }) => {
+        set(frame.rotate);
+    }).on("rotate", ({ target, beforeRotate }) => {
+        frame.rotate = beforeRotate;
+        target.style.transform = `rotate(${beforeRotate}deg)`;
+        $('.rotate-input').val(Math.round(beforeRotate));
+    }).on("rotateEnd", ({ target, isDrag, clientX, clientY }) => {
+        console.log("onRotateEnd", target, isDrag);
+    });
 
 
     if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'text') {
