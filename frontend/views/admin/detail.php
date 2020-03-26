@@ -21,6 +21,8 @@ $content = htmlspecialchars($html->content);
 
 <h3 class="logo">HTML</h3>
 
+<div class="html-id"><?= $html->id ?></div>
+
 <div id="editor" class="html-content">
 <?= $content ?>
 </div>
