@@ -150,9 +150,8 @@ const editableHandler = (event) => {
         scrollContainer: $('.main-svg-container').get(0),
         scrollThreshold: 0,
         getScrollPosition: ({ scrollContainer }) => ([scrollContainer.scrollLeft, scrollContainer.scrollTop])
-    }).on("drag", ({ target, left, top, beforeDelta }) => {
-        target.style.left = left + "px";
-        target.style.top = top + "px";
+    }).on("drag", ({ target, transform }) => {
+        target.style.transform = transform;
     }).on("resize", ({
         target,
         width,
