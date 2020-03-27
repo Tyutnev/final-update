@@ -146,6 +146,10 @@ const editableHandler = (event) => {
         rotatable: true,
         throttleRotate: 0,
         rotationPosition: "top",
+        scrollable: true,
+        scrollContainer: $('.main-svg-container').get(0),
+        scrollThreshold: 0,
+        getScrollPosition: ({ scrollContainer }) => ([scrollContainer.scrollLeft, scrollContainer.scrollTop])
     }).on("drag", ({ target, left, top, beforeDelta }) => {
         target.style.left = left + "px";
         target.style.top = top + "px";
@@ -199,6 +203,8 @@ const editableHandler = (event) => {
         scrollContainer.scrollLeft += direction[0] * 10;
         scrollContainer.scrollTop += direction[1] * 10;
     });
+
+    draggable.scrollable = true;
 
     if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'text') {
         divToBr();
