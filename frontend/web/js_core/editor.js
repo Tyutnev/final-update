@@ -195,7 +195,10 @@ const editableHandler = (event) => {
     }).on("rotateEnd", ({ target, isDrag, clientX, clientY }) => {
         console.log("onRotateEnd", target, isDrag);
     });
-
+    draggable.on("scroll", ({ scrollContainer, direction }) => {
+        scrollContainer.scrollLeft += direction[0] * 10;
+        scrollContainer.scrollTop += direction[1] * 10;
+    });
 
     if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'text') {
         divToBr();
